@@ -7,7 +7,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--wallpaper ändern-->
+        <!--wallpaper-->
         <scene sceneID="fn8-gq-ZBL">
             <objects>
                 <viewController storyboardIdentifier="Wallpaper" id="gX9-9j-CgB" customClass="WallpaperController" customModule="ERCode" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,26 +19,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4dV-om-Zsb">
-                                <rect key="frame" x="16" y="20" width="127" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mkn-YJ-Soo">
+                                <rect key="frame" x="85" y="160" width="150" height="44"/>
                                 <color key="backgroundColor" red="0.19215686269999999" green="0.50196078430000002" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Bild hinzufuegen">
+                                <state key="normal" title="Hitergrundbild">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mkn-YJ-Soo">
-                                <rect key="frame" x="176" y="20" width="80" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4dV-om-Zsb">
+                                <rect key="frame" x="85" y="90" width="150" height="44"/>
                                 <color key="backgroundColor" red="0.19215686269999999" green="0.50196078430000002" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="QR-Code">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="kni-Iu-jDQ"/>
+                                    <constraint firstAttribute="height" constant="44" id="v6a-RB-bad"/>
+                                </constraints>
+                                <state key="normal" title="Farbe setzen">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Mkn-YJ-Soo" firstAttribute="top" secondItem="RcJ-uM-8gO" secondAttribute="topMargin" constant="160" id="6ze-mC-Fc2"/>
+                            <constraint firstItem="4dV-om-Zsb" firstAttribute="top" secondItem="0gT-Xw-g2c" secondAttribute="bottom" constant="70" id="Oi9-Wc-Kxo"/>
+                            <constraint firstItem="Mkn-YJ-Soo" firstAttribute="width" secondItem="4dV-om-Zsb" secondAttribute="width" id="RHf-CV-Flc"/>
+                            <constraint firstItem="4dV-om-Zsb" firstAttribute="centerX" secondItem="RcJ-uM-8gO" secondAttribute="centerX" id="tiR-hk-Ldo"/>
+                            <constraint firstAttribute="centerX" secondItem="Mkn-YJ-Soo" secondAttribute="centerX" id="vaS-Xr-f5c"/>
+                            <constraint firstItem="Mkn-YJ-Soo" firstAttribute="height" secondItem="4dV-om-Zsb" secondAttribute="height" id="yJv-Hf-qQ2"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="wallpaper ändern" id="ca6-xp-b2c"/>
+                    <tabBarItem key="tabBarItem" title="wallpaper" image="galerie.png" id="ca6-xp-b2c"/>
                     <connections>
                         <outlet property="button" destination="4dV-om-Zsb" id="pwp-Wf-D4N"/>
                         <outlet property="qrButton" destination="Mkn-YJ-Soo" id="3X0-23-JHN"/>
@@ -46,7 +58,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VAZ-Ac-eNJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="605" y="393"/>
+            <point key="canvasLocation" x="581" y="393"/>
         </scene>
         <!--Notification-->
         <scene sceneID="zKo-Bn-b7C">
@@ -132,7 +144,7 @@
             </objects>
             <point key="canvasLocation" x="-421" y="1539"/>
         </scene>
-        <!--daten-->
+        <!--Profile-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController storyboardIdentifier="Profile" id="vXZ-lx-hvc" customClass="ViewController" customModule="ERCode" customModuleProvider="target" sceneMemberID="viewController">
@@ -144,15 +156,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GsH-iO-cNE">
-                                <rect key="frame" x="0.0" y="-5" width="320" height="568"/>
+                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GsH-iO-cNE">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="GsH-iO-cNE" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="20" id="50j-9l-2dN"/>
+                        </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <tabBarItem key="tabBarItem" title="daten" id="p4u-sr-cbX"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="nutzer.png" id="p4u-sr-cbX"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="webview" destination="GsH-iO-cNE" id="5D2-0e-gn4"/>
@@ -270,6 +285,8 @@
     <resources>
         <image name="ErCodeLogo_unscannbar.png" width="667" height="143"/>
         <image name="background.png" width="2504" height="3958"/>
+        <image name="galerie.png" width="30" height="30"/>
+        <image name="nutzer.png" width="30" height="30"/>
         <image name="pass_bg_640.png" width="640" height="119"/>
         <image name="user_bg_640.png" width="640" height="119"/>
     </resources>

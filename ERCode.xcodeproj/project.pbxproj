@@ -28,6 +28,12 @@
 		F57B7D0C1A39D46300E6ED70 /* StationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F57B7D0B1A39D46300E6ED70 /* StationCell.xib */; };
 		F57B7D0E1A39DC8300E6ED70 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F57B7D0D1A39DC8300E6ED70 /* AVFoundation.framework */; };
 		F57B7D101A3B036E00E6ED70 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F57B7D0F1A3B036E00E6ED70 /* MessageUI.framework */; };
+		F57B7D151A3EDB6100E6ED70 /* nutzer.png in Resources */ = {isa = PBXBuildFile; fileRef = F57B7D111A3EDB6100E6ED70 /* nutzer.png */; };
+		F57B7D161A3EDB6100E6ED70 /* nutzer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F57B7D121A3EDB6100E6ED70 /* nutzer@2x.png */; };
+		F57B7D171A3EDB6100E6ED70 /* scan.png in Resources */ = {isa = PBXBuildFile; fileRef = F57B7D131A3EDB6100E6ED70 /* scan.png */; };
+		F57B7D181A3EDB6100E6ED70 /* scan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F57B7D141A3EDB6100E6ED70 /* scan@2x.png */; };
+		F57B7D1B1A3EDC4400E6ED70 /* galerie.png in Resources */ = {isa = PBXBuildFile; fileRef = F57B7D191A3EDC4400E6ED70 /* galerie.png */; };
+		F57B7D1C1A3EDC4400E6ED70 /* galerie@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F57B7D1A1A3EDC4400E6ED70 /* galerie@2x.png */; };
 		F59D117819F5337400FAD937 /* InfoCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = F59D117719F5337400FAD937 /* InfoCard.xib */; };
 		F59D117A19F5340E00FAD937 /* InfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59D117919F5340E00FAD937 /* InfoCard.swift */; };
 		F59D118019F54F5200FAD937 /* qr_code.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F59D117F19F54F5200FAD937 /* qr_code.jpg */; };
@@ -93,6 +99,12 @@
 		F57B7D0B1A39D46300E6ED70 /* StationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StationCell.xib; sourceTree = "<group>"; };
 		F57B7D0D1A39DC8300E6ED70 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F57B7D0F1A3B036E00E6ED70 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		F57B7D111A3EDB6100E6ED70 /* nutzer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nutzer.png; path = ERCode/images/nutzer.png; sourceTree = "<group>"; };
+		F57B7D121A3EDB6100E6ED70 /* nutzer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "nutzer@2x.png"; path = "ERCode/images/nutzer@2x.png"; sourceTree = "<group>"; };
+		F57B7D131A3EDB6100E6ED70 /* scan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = scan.png; path = ERCode/images/scan.png; sourceTree = "<group>"; };
+		F57B7D141A3EDB6100E6ED70 /* scan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "scan@2x.png"; path = "ERCode/images/scan@2x.png"; sourceTree = "<group>"; };
+		F57B7D191A3EDC4400E6ED70 /* galerie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = galerie.png; path = ERCode/images/galerie.png; sourceTree = "<group>"; };
+		F57B7D1A1A3EDC4400E6ED70 /* galerie@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "galerie@2x.png"; path = "ERCode/images/galerie@2x.png"; sourceTree = "<group>"; };
 		F59D117719F5337400FAD937 /* InfoCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InfoCard.xib; path = views/InfoCard.xib; sourceTree = "<group>"; };
 		F59D117919F5340E00FAD937 /* InfoCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfoCard.swift; path = views/InfoCard.swift; sourceTree = "<group>"; };
 		F59D117F19F54F5200FAD937 /* qr_code.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = qr_code.jpg; sourceTree = "<group>"; };
@@ -290,6 +302,12 @@
 		F5F5397219EEA4FB00524A39 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				F57B7D191A3EDC4400E6ED70 /* galerie.png */,
+				F57B7D1A1A3EDC4400E6ED70 /* galerie@2x.png */,
+				F57B7D111A3EDB6100E6ED70 /* nutzer.png */,
+				F57B7D121A3EDB6100E6ED70 /* nutzer@2x.png */,
+				F57B7D131A3EDB6100E6ED70 /* scan.png */,
+				F57B7D141A3EDB6100E6ED70 /* scan@2x.png */,
 				F5F52AC41A309B6C000EFB91 /* background.png */,
 				F5F52AC51A309B6C000EFB91 /* ladescreen_320.png */,
 				F5F52AC61A309B6C000EFB91 /* ladescreen_640.png */,
@@ -402,7 +420,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F57B7D1C1A3EDC4400E6ED70 /* galerie@2x.png in Resources */,
+				F57B7D161A3EDB6100E6ED70 /* nutzer@2x.png in Resources */,
 				F57B7CFB1A39A41500E6ED70 /* LoginViewController.xib in Resources */,
+				F57B7D171A3EDB6100E6ED70 /* scan.png in Resources */,
 				F5F52AD01A309B6C000EFB91 /* login_bg.png in Resources */,
 				F5F52ACE1A309B6C000EFB91 /* ladescreen_640.png in Resources */,
 				F55ED4A119E7C93500199C3F /* Main.storyboard in Resources */,
@@ -413,13 +434,16 @@
 				F57B7D061A39C9C400E6ED70 /* ControlStations.json in Resources */,
 				F59D118819F64A1000FAD937 /* pg.xib in Resources */,
 				F55ED4A619E7C93500199C3F /* LaunchScreen.xib in Resources */,
+				F57B7D181A3EDB6100E6ED70 /* scan@2x.png in Resources */,
 				F57B7D041A39C9B300E6ED70 /* success.wav in Resources */,
 				F5F5397419EEA57500524A39 /* ErCodeLogo_unscannbar.png in Resources */,
+				F57B7D151A3EDB6100E6ED70 /* nutzer.png in Resources */,
 				F59D118519F557BA00FAD937 /* female-sign.jpg in Resources */,
 				F5F52AD21A309B6C000EFB91 /* pass_bg_640.png in Resources */,
 				F59D118219F5564300FAD937 /* apple.png in Resources */,
 				F55ED4BD19E8179A00199C3F /* Podfile in Resources */,
 				F59D118619F557BA00FAD937 /* male-sign.jpg in Resources */,
+				F57B7D1B1A3EDC4400E6ED70 /* galerie.png in Resources */,
 				F57B7D0C1A39D46300E6ED70 /* StationCell.xib in Resources */,
 				F57B7D081A39CA2200E6ED70 /* StationViewController.xib in Resources */,
 				F55ED4A319E7C93500199C3F /* Images.xcassets in Resources */,

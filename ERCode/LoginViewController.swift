@@ -35,7 +35,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         manager.POST(
             "\(kServerUrl)login/",
             parameters: ["username": username.text, "password": password.text],
-            success: {(operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
+            success: { [unowned self] (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
                 var response: NSDictionary = responseObject as NSDictionary
                 let authenticated = response[kIsAuthenticated] as Bool
                 if authenticated {
@@ -74,10 +74,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                       let base64str = response["Data"]!["qrcode"]! as String
                       let imageData = NSData(base64EncodedString: base64str, options:nil)
                       imageData?.writeToFile(qrImagePath, atomically: true)
-                      println("success get QR Image")
                     },
                     failure: {(operation: AFHTTPRequestOperation!, error: NSError!) in
-                            println("problem get QR Code")
                     }
                 )
             }

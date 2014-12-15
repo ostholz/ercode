@@ -32,6 +32,8 @@ class StationViewController: UIViewController, UITableViewDataSource,
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 
+    let tabItem = UITabBarItem(title: "Scan", image: UIImage(named: "scan.png"), selectedImage: nil)
+    self.tabBarItem = tabItem
   }
 
   required init(coder aDecoder: NSCoder) {
@@ -40,9 +42,6 @@ class StationViewController: UIViewController, UITableViewDataSource,
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    let tabItem = UITabBarItem(title: "Scan", image: nil, selectedImage: nil)
-    self.tabBarItem = tabItem
 
     setButtonStatus()
 
@@ -102,7 +101,6 @@ class StationViewController: UIViewController, UITableViewDataSource,
     if selectedStation == nil {
       activCondition++
     }
-    println("<<< activCondition: \(activCondition)")
     selectedStation = controlStations[indexPath.row]
     setButtonStatus()
   }
@@ -156,7 +154,6 @@ class StationViewController: UIViewController, UITableViewDataSource,
     if activCondition > 0 {
       activCondition--
     }
-    println("activCondition: \(activCondition)")
     let scanController = ScanViewController()
     scanController.parentController = self
 
@@ -176,14 +173,14 @@ class StationViewController: UIViewController, UITableViewDataSource,
     }
 
     let messageComposeVC = MFMessageComposeViewController()
-    messageComposeVC.delegate = self
+    messageComposeVC.messageComposeDelegate = self
     messageComposeVC.recipients = [selectedStation!.telefonNumber]
     messageComposeVC.body = scannedERcode
     self.presentViewController(messageComposeVC, animated: true, completion: nil)
   }
 
   func successGetERCode(ercode: String) {
-    SVProgressHUD.showSuccessWithStatus(ercode)
+//    SVProgressHUD.showSuccessWithStatus(ercode)
 
     // play sound
     let soundUrl = NSBundle.mainBundle().URLForResource("success", withExtension: "wav")
@@ -191,26 +188,53 @@ class StationViewController: UIViewController, UITableViewDataSource,
     AudioServicesCreateSystemSoundID(soundUrl, &successSound)
     AudioServicesPlayAlertSound(successSound)
 
-    scannedERcode = ercode
-    ercodeLabel.text = ercode
-    activCondition++
-    println("success Get ERCode - activCondition: \(activCondition)")
+    validateERCode(ercode)
 
-    setButtonStatus()
+}
 
-    var localNotification = UILocalNotification()
-    localNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
-    localNotification.alertBody = "Recognized ER-Code"
-    localNotification.timeZone = NSTimeZone.defaultTimeZone()
+  func validateERCode(code: String) {
+    SVProgressHUD.show()
 
-    UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+    let manager = AFHTTPRequestOperationManager()
+    // default responseSerializer ist JSON Serializer
+    manager.responseSerializer = AFJSONResponseSerializer() as AFHTTPResponseSerializer
+    println("\(kServerUrl)ercode/check/\(code)")
+    manager.GET(
+      "\(kServerUrl)ercode/check/\(code)",
+      parameters: nil,
+      success: {[unowned self] (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
+        var response: NSDictionary = responseObject as NSDictionary
+        if response["ercode"] as Bool {
+          self.scannedERcode = code
+          self.ercodeLabel.text = code
+          self.activCondition++
+
+          self.setButtonStatus()
+
+          var localNotification = UILocalNotification()
+          localNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
+          localNotification.alertBody = "Recognized ER-Code"
+          localNotification.timeZone = NSTimeZone.defaultTimeZone()
+
+          UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+
+        } else {
+          self.ercodeLabel.text = "Keine gültige ER-Code"
+        }
+        SVProgressHUD.dismiss()
+
+      },
+
+      failure: {(operation: AFHTTPRequestOperation!, error: NSError!) in
+        SVProgressHUD.dismiss()
+      }
+    )
+
   }
-  
+
 
   func setButtonStatus() {
     var enable = activCondition == 2 ? true : false
-
-    println(">>> activCondition: \(activCondition)")
 
     callStationButton.enabled = enable
     smsButton.enabled = enable
@@ -224,5 +248,8 @@ class StationViewController: UIViewController, UITableViewDataSource,
   }
   
 }
+
+
+
 
 

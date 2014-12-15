@@ -36,7 +36,7 @@ class ViewController: UIViewController, UIWebViewDelegate {
         }
       }
         
-      let url = NSURL(string: "\(kServerUrl)\(kUserInfo)")
+      let url = NSURL(string: "\(kServerUrl)\(kUserIndex)")
         let request = NSURLRequest(URL: url!)
         webview.loadRequest(request)
     }

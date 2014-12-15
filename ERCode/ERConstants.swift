@@ -13,6 +13,7 @@ let kLoginData = "Data"
 let kErrCode = "ErrCode"
 let kErrMessage = "ErrMessage"
 let kUserInfo = "anmeldung/grunddaten_verwalten.html"
+let kUserIndex = "anmeldung/index.php"
 
 let kUID = "UID"
 let kErcode = "ercode"
