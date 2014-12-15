@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6246"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ladescreen_640.png" translatesAutoresizingMaskIntoConstraints="NO" id="hj7-rz-uId">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ladescreen_320.png" translatesAutoresizingMaskIntoConstraints="NO" id="ojp-Bk-x3P">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright (c) 2014 i2dm gmbh. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
+                    <rect key="frame" x="20" y="439" width="441" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="ojp-Bk-x3P" secondAttribute="bottom" id="BnL-B6-4lk"/>
+                <constraint firstItem="ojp-Bk-x3P" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="HUW-cT-pTq"/>
+                <constraint firstAttribute="trailing" secondItem="hj7-rz-uId" secondAttribute="trailing" id="KGh-re-zMI"/>
+                <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20" id="Kzo-t9-V3l"/>
+                <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="MfP-vx-nX0"/>
+                <constraint firstAttribute="bottom" secondItem="hj7-rz-uId" secondAttribute="bottom" id="Pa3-dC-rFB"/>
+                <constraint firstItem="hj7-rz-uId" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Y6f-Nm-JEG"/>
+                <constraint firstAttribute="centerX" secondItem="8ie-xW-0ye" secondAttribute="centerX" id="ZEH-qu-HZ9"/>
+                <constraint firstAttribute="trailing" secondItem="ojp-Bk-x3P" secondAttribute="trailing" id="nea-kq-OBR"/>
+                <constraint firstItem="ojp-Bk-x3P" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rDB-hq-dAS"/>
+                <constraint firstItem="hj7-rz-uId" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="vkm-oV-EEl"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="hj7-rz-uId"/>
+                    <exclude reference="ojp-Bk-x3P"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="KGh-re-zMI"/>
+                    <exclude reference="Pa3-dC-rFB"/>
+                    <exclude reference="Y6f-Nm-JEG"/>
+                    <exclude reference="vkm-oV-EEl"/>
+                    <exclude reference="BnL-B6-4lk"/>
+                    <exclude reference="HUW-cT-pTq"/>
+                    <exclude reference="nea-kq-OBR"/>
+                    <exclude reference="rDB-hq-dAS"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular">
+                <mask key="subviews">
+                    <include reference="hj7-rz-uId"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="KGh-re-zMI"/>
+                    <include reference="Pa3-dC-rFB"/>
+                    <include reference="Y6f-Nm-JEG"/>
+                    <include reference="vkm-oV-EEl"/>
+                </mask>
+            </variation>
+            <variation key="widthClass=compact">
+                <mask key="subviews">
+                    <include reference="ojp-Bk-x3P"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="BnL-B6-4lk"/>
+                    <include reference="HUW-cT-pTq"/>
+                    <include reference="nea-kq-OBR"/>
+                    <include reference="rDB-hq-dAS"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="443" y="435"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ladescreen_320.png" width="320" height="480"/>
+        <image name="ladescreen_640.png" width="640" height="1012"/>
+    </resources>
+</document>

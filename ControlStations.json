@@ -1,0 +1,100 @@
+ [
+  {
+  "id": "26",
+  "name": "Florian Bremen",
+  "telefonNumber": "+4940-123456",
+  "lat": 53.0847558,
+  "lng": 8.82082790000004
+  },
+  {
+  "id": "2",
+  "name": "Leitstelle Bremerhaven",
+  "telefonNumber": "+4940-123456",
+  "lat": 53.55,
+  "lng": 8.58299999999997
+  },
+  {
+  "id": "3",
+  "name": "Florian Hamburg",
+  "telefonNumber": "+4940-123456",
+  "lat": 53.5510846,
+  "lng": 9.99368179999999
+  },
+  {
+  "id": "4",
+  "name": "Rotkreuz Hamburg",
+  "telefonNumber": "+4940-123456",
+  "lat": 53.5510846,
+  "lng": 9.99368179999999
+  },
+  {
+  "id": "5",
+  "name": "Leitstelle Aurich",
+  "telefonNumber": "+4940-123456",
+  "lat": 53.47083929999999,
+  "lng": 7.484830800000054
+  },
+  {
+  "id": "6",
+  "name": "Florian Heidekreis (Soltau)",
+  "telefonNumber": "+4940-123456",
+  "lat": 53.0664981,
+  "lng": 9.882524800000056
+  },
+  {
+  "id": "7",
+  "name": "Leitstelle Braunschweig",
+  "telefonNumber": "+4940-123456",
+  "lat": 52.2688736,
+  "lng": 10.526769599999966
+  },
+  {
+  "id": "8",
+  "name": "Leitstelle Celle",
+  "telefonNumber": "+4940-123456",
+  "lat": 52.61681069999999,
+  "lng": 10.063193599999977
+  },
+  {
+  "id": "1",
+  "name": "Florian Cuxhaven",
+  "telefonNumber": "+4940-123456",
+  "lat": 53.8632464,
+  "lng": 8.693042399999968
+  },
+  {
+  "id": "9",
+  "name": "Leitstelle Diepholz",
+  "telefonNumber": "+4940-123456",
+  "lat": 52.6056456,
+  "lng": 8.370787800000016
+  },
+  {
+  "id": "10",
+  "name": "Leitstelle Emden",
+  "telefonNumber": "+4940-123456",
+  "lat": 53.35940290000001,
+  "lng": 7.2060094999999365
+  },
+  {
+  "id": "11",
+  "name": "Leitstelle Emsland",
+  "telefonNumber": "+4940-123456",
+  "lat": 52.7253212,
+  "lng": 7.463152499999978
+  },
+  {
+  "id": "12",
+  "name": "Leitstelle Friesland-Wilhelmshaven",
+  "telefonNumber": "+4940-123456",
+  "lat": 53.1641642,
+  "lng": 5.781754200000023
+  },
+  {
+  "id": "13",
+  "name": "Florian Geeste",
+  "telefonNumber": "+4940-123456",
+  "lat": 52.6017948,
+  "lng": 7.271715800000038
+  }
+  ]

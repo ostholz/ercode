@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6246"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="ERCode" customModuleProvider="target">
+            <connections>
+                <outlet property="password" destination="oH4-2k-OJk" id="OSe-bb-Tfd"/>
+                <outlet property="rememberMe" destination="0kW-1P-5Lm" id="Rlb-qm-WkD"/>
+                <outlet property="username" destination="bbz-Hj-E5g" id="9sE-Vh-a5F"/>
+                <outlet property="view" destination="iN0-l3-epB" id="Vdr-9A-CZT"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="R3H-V8-nqH">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="540"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="user_bg_640.png" translatesAutoresizingMaskIntoConstraints="NO" id="eIo-qv-z6S">
+                    <rect key="frame" x="0.0" y="124" width="320" height="56"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="2Vr-RJ-1x1"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="pass_bg_640.png" translatesAutoresizingMaskIntoConstraints="NO" id="Pk7-vc-Urn">
+                    <rect key="frame" x="0.0" y="188" width="320" height="56"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ErCodeLogo_unscannbar.png" translatesAutoresizingMaskIntoConstraints="NO" id="LZQ-sK-es0">
+                    <rect key="frame" x="16" y="0.0" width="288" height="143"/>
+                </imageView>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bbz-Hj-E5g">
+                    <rect key="frame" x="95" y="137" width="209" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oH4-2k-OJk">
+                    <rect key="frame" x="95" y="201" width="209" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0kW-1P-5Lm">
+                    <rect key="frame" x="16" y="260" width="51" height="31"/>
+                </switch>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="eingeloggt bleiben" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="br3-iZ-VAV">
+                    <rect key="frame" x="81" y="265" width="144" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gR-rI-ih7">
+                    <rect key="frame" x="16" y="373" width="147" height="30"/>
+                    <state key="normal" title="Passwort vergessen?">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PDm-vn-Ulb">
+                    <rect key="frame" x="205" y="373" width="107" height="30"/>
+                    <state key="normal" title="Registieren">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uU7-dw-AGc">
+                    <rect key="frame" x="16" y="313" width="288" height="44"/>
+                    <color key="backgroundColor" red="0.04189806099" green="0.72552710840000001" blue="0.04189806099" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <state key="normal" title="Einloggen">
+                        <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="doLogin:" destination="-1" eventType="touchUpInside" id="7cx-EA-i9L"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="LZQ-sK-es0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="78N-54-Q2y"/>
+                <constraint firstItem="R3H-V8-nqH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="7lF-Jz-QMS"/>
+                <constraint firstAttribute="trailing" secondItem="R3H-V8-nqH" secondAttribute="trailing" id="EFx-Ze-Z5I"/>
+                <constraint firstItem="eIo-qv-z6S" firstAttribute="centerX" secondItem="R3H-V8-nqH" secondAttribute="centerX" id="FSP-qo-Sy5"/>
+                <constraint firstAttribute="trailing" secondItem="LZQ-sK-es0" secondAttribute="trailing" constant="16" id="Gds-93-4Z3"/>
+                <constraint firstItem="R3H-V8-nqH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aK0-Cc-iBe"/>
+                <constraint firstItem="eIo-qv-z6S" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cf1-mt-nDz"/>
+                <constraint firstItem="Pk7-vc-Urn" firstAttribute="top" secondItem="LZQ-sK-es0" secondAttribute="bottom" constant="36" id="cx1-9L-WH2"/>
+                <constraint firstItem="Pk7-vc-Urn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="g7W-62-N0T"/>
+                <constraint firstAttribute="trailing" secondItem="eIo-qv-z6S" secondAttribute="trailing" id="gjW-PH-oZg"/>
+                <constraint firstItem="eIo-qv-z6S" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="157" id="iay-34-sNf"/>
+                <constraint firstAttribute="trailing" secondItem="Pk7-vc-Urn" secondAttribute="trailing" id="jZb-vV-PuO"/>
+                <constraint firstItem="LZQ-sK-es0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="mVJ-Ud-CYI"/>
+            </constraints>
+            <point key="canvasLocation" x="442" y="478"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ErCodeLogo_unscannbar.png" width="667" height="143"/>
+        <image name="background.png" width="2504" height="3958"/>
+        <image name="pass_bg_640.png" width="640" height="119"/>
+        <image name="user_bg_640.png" width="640" height="119"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
