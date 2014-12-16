@@ -14,6 +14,7 @@ let kErrCode = "ErrCode"
 let kErrMessage = "ErrMessage"
 let kUserInfo = "anmeldung/grunddaten_verwalten.html"
 let kUserIndex = "anmeldung/index.php"
+let kWebLogin = "http://ercode.i2dm.de/anmeldung/anmeldeform.html?typ=2"
 
 let kUID = "UID"
 let kErcode = "ercode"

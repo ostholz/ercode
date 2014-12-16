@@ -37,12 +37,14 @@ class ViewController: UIViewController, UIWebViewDelegate {
       }
         
       let url = NSURL(string: "\(kServerUrl)\(kUserIndex)")
-        let request = NSURLRequest(URL: url!)
-        webview.loadRequest(request)
+      let request = NSMutableURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: 30.0)
+      request.HTTPMethod = "POST"
+      request.HTTPBody = "benutzername1=patient1&passwort1=patient1".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+      webview.loadRequest(request)
     }
 
     override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+      super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
