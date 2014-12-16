@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6246"/>
     </dependencies>
     <objects>
@@ -21,14 +22,14 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="lLP-PA-sVW">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Leitstellen in der Nähe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfg-pb-ogB">
-                    <rect key="frame" x="8" y="8" width="584" height="43"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leitstellen in der Nähe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfg-pb-ogB">
+                    <rect key="frame" x="8" y="20" width="584" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                     <color key="textColor" red="0.19215686269999999" green="0.50196078430000002" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="olY-ie-1sx">
-                    <rect key="frame" x="0.0" y="82" width="600" height="413"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="olY-ie-1sx">
+                    <rect key="frame" x="0.0" y="79" width="600" height="416"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="YPZ-sa-gcP"/>
@@ -70,19 +71,8 @@
                         <action selector="callStation" destination="-1" eventType="touchUpInside" id="U2y-QG-Gih"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAI-By-so5">
-                    <rect key="frame" x="422" y="500" width="80" height="44"/>
-                    <color key="backgroundColor" red="0.04189806099" green="0.72552710840000001" blue="0.04189806099" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                    <state key="normal" title="SMS">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="sendSMS" destination="-1" eventType="touchUpInside" id="x3f-g9-q06"/>
-                    </connections>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMl-rs-po4" userLabel="ercodeLabel">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMl-rs-po4" userLabel="ercodeLabel">
+                    <rect key="frame" x="20" y="48" width="560" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="akc-os-Pke"/>
                         <constraint firstAttribute="height" constant="21" id="gKa-B3-du4"/>
@@ -96,27 +86,36 @@
                         </mask>
                     </variation>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAI-By-so5">
+                    <rect key="frame" x="410" y="500" width="80" height="44"/>
+                    <color key="backgroundColor" red="0.04189806099" green="0.72552710840000001" blue="0.04189806099" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <state key="normal" title="SMS">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="sendSMS" destination="-1" eventType="touchUpInside" id="x3f-g9-q06"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="qAI-By-so5" firstAttribute="top" secondItem="WpK-GR-0aJ" secondAttribute="top" id="15s-ac-9jD"/>
                 <constraint firstAttribute="trailing" secondItem="olY-ie-1sx" secondAttribute="trailing" id="3mt-9e-qf0"/>
-                <constraint firstAttribute="trailing" secondItem="vMl-rs-po4" secondAttribute="trailing" constant="20" id="5g1-eg-UcJ"/>
                 <constraint firstItem="tfg-pb-ogB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="7d3-BN-sZb"/>
                 <constraint firstAttribute="trailing" secondItem="lLP-PA-sVW" secondAttribute="trailing" id="DNg-KE-Izv"/>
-                <constraint firstItem="qAI-By-so5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WpK-GR-0aJ" secondAttribute="trailing" constant="10" id="GMN-fq-93G"/>
                 <constraint firstItem="WpK-GR-0aJ" firstAttribute="top" secondItem="7oO-TV-9wK" secondAttribute="top" id="ISw-Ut-JCp"/>
                 <constraint firstItem="WpK-GR-0aJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="MXb-DK-RE9"/>
+                <constraint firstItem="7oO-TV-9wK" firstAttribute="leading" secondItem="qAI-By-so5" secondAttribute="trailing" constant="22" id="PvA-4o-rSi"/>
                 <constraint firstItem="olY-ie-1sx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="T5d-YG-pVQ"/>
-                <constraint firstItem="tfg-pb-ogB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="TSg-cZ-KXn"/>
+                <constraint firstItem="tfg-pb-ogB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="TSg-cZ-KXn"/>
                 <constraint firstItem="vMl-rs-po4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="48" id="WBd-0w-WZC"/>
-                <constraint firstItem="olY-ie-1sx" firstAttribute="top" secondItem="tfg-pb-ogB" secondAttribute="bottom" constant="10" id="Wtu-CB-MjZ"/>
                 <constraint firstItem="qAI-By-so5" firstAttribute="height" secondItem="7oO-TV-9wK" secondAttribute="height" id="Xf4-A4-pjS"/>
                 <constraint firstItem="olY-ie-1sx" firstAttribute="top" secondItem="vMl-rs-po4" secondAttribute="bottom" constant="10" id="c7m-H4-XNW"/>
                 <constraint firstAttribute="bottom" secondItem="lLP-PA-sVW" secondAttribute="bottom" id="clx-oD-nmd"/>
                 <constraint firstItem="qAI-By-so5" firstAttribute="width" secondItem="7oO-TV-9wK" secondAttribute="width" id="epH-73-lqz"/>
                 <constraint firstAttribute="trailing" secondItem="7oO-TV-9wK" secondAttribute="trailing" constant="8" id="gGs-ZZ-4gc"/>
-                <constraint firstItem="vMl-rs-po4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="i0A-12-CKP"/>
                 <constraint firstAttribute="trailing" secondItem="vMl-rs-po4" secondAttribute="trailing" constant="20" id="iXz-Ct-e9F"/>
                 <constraint firstAttribute="trailing" secondItem="tfg-pb-ogB" secondAttribute="trailing" constant="8" id="kGb-xU-cyi"/>
                 <constraint firstItem="vMl-rs-po4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="kMj-T6-7Dm"/>
@@ -124,15 +123,7 @@
                 <constraint firstItem="WpK-GR-0aJ" firstAttribute="top" secondItem="olY-ie-1sx" secondAttribute="bottom" constant="5" id="qIt-Z7-eQF"/>
                 <constraint firstAttribute="bottom" secondItem="WpK-GR-0aJ" secondAttribute="bottom" constant="56" id="ukD-eu-rUm"/>
                 <constraint firstItem="lLP-PA-sVW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="yBy-Lq-Ju7"/>
-                <constraint firstItem="7oO-TV-9wK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qAI-By-so5" secondAttribute="trailing" constant="10" id="yg1-Bp-bMc"/>
             </constraints>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="5g1-eg-UcJ"/>
-                    <exclude reference="i0A-12-CKP"/>
-                    <exclude reference="Wtu-CB-MjZ"/>
-                </mask>
-            </variation>
             <point key="canvasLocation" x="504" y="454"/>
         </view>
     </objects>

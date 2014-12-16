@@ -23,12 +23,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     let mainVC = storyboard.instantiateViewControllerWithIdentifier("Profile") as UIViewController
-    let wallpaperVC = storyboard.instantiateViewControllerWithIdentifier("Wallpaper") as UIViewController
+    let wallpaperVC = storyboard.instantiateViewControllerWithIdentifier("Galerie") as UIViewController
+    let naviVC = UINavigationController(rootViewController: wallpaperVC)
     let scanVC = StationViewController(nibName: "StationViewController", bundle: NSBundle.mainBundle())
+    let notifVC = storyboard.instantiateViewControllerWithIdentifier("Notification") as UIViewController
 
     controllers.append(mainVC)
-    controllers.append(wallpaperVC)
+    controllers.append(naviVC)
     controllers.append(scanVC)
+    controllers.append(notifVC)
 
     tabController.setViewControllers(controllers, animated: false)
     window!.rootViewController = tabController

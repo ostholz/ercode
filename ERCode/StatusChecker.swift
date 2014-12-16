@@ -20,7 +20,7 @@ class StatusChecker {
     }
 
   class func getQRImage() -> UIImage? {
-    let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as String
+    let documentPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as String
     let qrImagePath = documentPath.stringByAppendingString("/qrCode.png")
     let filemanager = NSFileManager.defaultManager()
     if filemanager.fileExistsAtPath(qrImagePath) {
@@ -33,7 +33,7 @@ class StatusChecker {
   }
 
   class func saveQRImage(image: UIImage!) {
-    let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as String
+    let documentPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as String
     let qrImagePath = documentPath.stringByAppendingString("/qrCode.png")
     let imageData: NSData = UIImagePNGRepresentation(image)
     imageData.writeToFile(qrImagePath, atomically: true)
@@ -44,12 +44,25 @@ class StatusChecker {
     wallpaperIndex++
 
 
-    let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as String
+    let documentPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as String
     let qrImagePath = documentPath.stringByAppendingString("/wallpaper_\(wallpaperIndex).png")
     let imageData: NSData = UIImagePNGRepresentation(image)
     imageData.writeToFile(qrImagePath, atomically: true)
     NSUserDefaults.standardUserDefaults().setInteger(wallpaperIndex, forKey: "wallpaperIndex")
     NSUserDefaults.standardUserDefaults().synchronize()
+  }
+
+  class func getWallpaper(name: NSString) -> UIImage? {
+    let documentPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as String
+    let imagePath = documentPath.stringByAppendingString("/wallpaper_\(name).png")
+    let filemanager = NSFileManager.defaultManager()
+    if filemanager.fileExistsAtPath(imagePath) {
+      let imageData = NSData(contentsOfFile: imagePath)
+      let image = UIImage(data: imageData!)
+      return image!
+    } else {
+      return nil
+    }
   }
 
 }

@@ -150,7 +150,7 @@ class StationViewController: UIViewController, UITableViewDataSource,
     controller.dismissViewControllerAnimated(true, completion: nil)
   }
 
-  @IBAction func startScanQRImage() {
+  @IBAction func startScanQRImage(sender: AnyObject) {
     if activCondition > 0 {
       activCondition--
     }
@@ -160,12 +160,12 @@ class StationViewController: UIViewController, UITableViewDataSource,
     self.presentViewController(scanController, animated: true, completion: nil)
   }
 
-  @IBAction func callStation() {
+  @IBAction func callStation(sender: AnyObject) {
     var telUrl = "tel://" + selectedStation!.telefonNumber
     UIApplication.sharedApplication().openURL(NSURL(string: telUrl)!)
   }
 
-  @IBAction func sendSMS() {
+  @IBAction func sendSMS(sender: AnyObject) {
     if !MFMessageComposeViewController.canSendText() {
       let alertview = UIAlertView(title: "", message: "SMS kann nicht gesendet werden", delegate: nil, cancelButtonTitle: "OK")
       alertview.show()
