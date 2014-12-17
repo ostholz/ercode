@@ -25,7 +25,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view tag="95" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HJn-Dg-m7f" userLabel="sliderContainer">
+                            <view alpha="0.0" tag="95" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HJn-Dg-m7f" userLabel="sliderContainer">
                                 <rect key="frame" x="0.0" y="115" width="320" height="395"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rot" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbC-WL-44f">
@@ -79,7 +79,7 @@
                                             <action selector="setBackgroundColor:" destination="gX9-9j-CgB" eventType="valueChanged" id="xr5-5V-trU"/>
                                         </connections>
                                     </slider>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transparenz" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUF-cl-boU">
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transparenz" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUF-cl-boU">
                                         <rect key="frame" x="10" y="199" width="95" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="95" id="AhG-CI-3bl"/>
@@ -88,7 +88,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <slider opaque="NO" tag="113" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="kM8-OM-r65" userLabel="alpha Slider">
+                                    <slider opaque="NO" alpha="0.0" tag="113" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="kM8-OM-r65" userLabel="alpha Slider">
                                         <rect key="frame" x="113" y="195" width="199" height="31"/>
                                         <connections>
                                             <action selector="setBackgroundColor:" destination="gX9-9j-CgB" eventType="valueChanged" id="oCX-OM-gQJ"/>

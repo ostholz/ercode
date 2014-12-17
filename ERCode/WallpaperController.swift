@@ -29,6 +29,10 @@ class WallpaperController: UIViewController, UIImagePickerControllerDelegate, UI
   @IBOutlet weak var alphaSlider: UISlider!
   @IBOutlet weak var continueButton: UIButton!
   @IBOutlet weak var cancelButton: UIButton!
+
+  override func viewWillAppear(animated: Bool) {
+    self.navigationController?.navigationBarHidden = false
+  }
     
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -149,7 +153,7 @@ class WallpaperController: UIViewController, UIImagePickerControllerDelegate, UI
   // speichert aktuelle Hintergrund und QR-Code
   func generateWallpaper() {
       
-    UIGraphicsBeginImageContextWithOptions(self.view.frame.size, self.view.opaque, 0.0)
+    UIGraphicsBeginImageContextWithOptions(self.view.frame.size, false, 0.0)
     imagesView.layer.renderInContext(UIGraphicsGetCurrentContext())
     
     var resultImage = UIGraphicsGetImageFromCurrentImageContext()
