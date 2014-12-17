@@ -103,7 +103,8 @@ class WallpaperController: UIViewController, UIImagePickerControllerDelegate, UI
     if (qrCodeAdded) {
       // when this button (continue button) tapped again, generated wallpaper.
       // 1. save into Photoalbum, 2. save in Documents directory, 3. save thumbnai image.
-
+      continueButton.enabled = false
+      generateWallpaper()
 
     } else {
       qrCodeAdded = true
@@ -112,9 +113,7 @@ class WallpaperController: UIViewController, UIImagePickerControllerDelegate, UI
       button.alpha = 0.0
 
       var qrImage = StatusChecker.getQRImage()
-      if (qrImage == nil) {
-        qrImage = UIImage(named: "qr_code.jpg")
-      }
+      // TODO: make sure, that the qr image is already saved.
 
       var screenSize: CGSize = UIScreen.mainScreen().bounds.size
       var qrImageView = UIImageView(image: qrImage)
@@ -159,16 +158,16 @@ class WallpaperController: UIViewController, UIImagePickerControllerDelegate, UI
     // speichert in Photoalbum
     UIImageWriteToSavedPhotosAlbum(resultImage, nil, nil, nil)
 
-    // speichert in Sandbox
-    StatusChecker.saveQRImage(resultImage)
-    
+    // speichert in Documents Dir
+    StatusChecker.saveWallpaper(resultImage)
+
     var iv = UIImageView(image: resultImage)
     
     imagesView.removeFromSuperview()
     button.removeFromSuperview()
-//    qrButton.removeFromSuperview()
 
-    self.view.addSubview(iv)
+    self.navigationController?.popToRootViewControllerAnimated(true)
+
   }
 
 

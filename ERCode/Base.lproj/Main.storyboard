@@ -25,7 +25,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view alpha="0.0" tag="95" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HJn-Dg-m7f" userLabel="sliderContainer">
+                            <view tag="95" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HJn-Dg-m7f" userLabel="sliderContainer">
                                 <rect key="frame" x="0.0" y="115" width="320" height="395"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rot" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbC-WL-44f">
@@ -95,7 +95,6 @@
                                         </connections>
                                     </slider>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="DRH-ag-bEo" firstAttribute="width" secondItem="FT4-GG-CrT" secondAttribute="width" id="15B-3i-HPk"/>
                                     <constraint firstAttribute="trailing" secondItem="FT4-GG-CrT" secondAttribute="trailing" constant="10" id="3J1-N5-B7L"/>
@@ -137,7 +136,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTc-vb-KI2">
-                                <rect key="frame" x="124" y="459" width="80" height="44"/>
+                                <rect key="frame" x="124" y="514" width="80" height="44"/>
                                 <color key="backgroundColor" red="0.19215686269999999" green="0.50196078430000002" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="LR0-Rr-6d3"/>
@@ -148,7 +147,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zwi-h2-IuT">
-                                <rect key="frame" x="234" y="459" width="80" height="44"/>
+                                <rect key="frame" x="234" y="514" width="80" height="44"/>
                                 <color key="backgroundColor" red="0.19215686269999999" green="0.50196078430000002" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="2Ci-ej-K9h"/>
@@ -169,7 +168,7 @@
                             <constraint firstItem="o2A-kB-6gI" firstAttribute="leading" secondItem="RcJ-uM-8gO" secondAttribute="leadingMargin" id="9uJ-5y-dEF"/>
                             <constraint firstItem="zwi-h2-IuT" firstAttribute="leading" secondItem="PTc-vb-KI2" secondAttribute="trailing" constant="30" id="A5Q-gG-w5U"/>
                             <constraint firstItem="zwi-h2-IuT" firstAttribute="trailing" secondItem="RcJ-uM-8gO" secondAttribute="trailingMargin" constant="10" id="C39-fG-bjT"/>
-                            <constraint firstItem="EIj-9r-LLM" firstAttribute="top" secondItem="zwi-h2-IuT" secondAttribute="bottom" constant="65" id="Fne-sn-Zsi"/>
+                            <constraint firstItem="EIj-9r-LLM" firstAttribute="top" secondItem="zwi-h2-IuT" secondAttribute="bottom" constant="10" id="Fne-sn-Zsi"/>
                             <constraint firstItem="PTc-vb-KI2" firstAttribute="height" secondItem="zwi-h2-IuT" secondAttribute="height" id="ItG-VW-nQx"/>
                             <constraint firstItem="HJn-Dg-m7f" firstAttribute="leading" secondItem="RcJ-uM-8gO" secondAttribute="leading" id="Qgq-o0-gJ9"/>
                             <constraint firstItem="PTc-vb-KI2" firstAttribute="top" secondItem="zwi-h2-IuT" secondAttribute="top" id="Xrq-7q-NwQ"/>
@@ -199,7 +198,7 @@
         <!--Notification-->
         <scene sceneID="zKo-Bn-b7C">
             <objects>
-                <viewController storyboardIdentifier="Notification" id="5wP-eU-bsf" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Notification" id="5wP-eU-bsf" customClass="NotificationController" customModule="ERCode" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cBM-MD-GZK"/>
                         <viewControllerLayoutGuide type="bottom" id="AuR-fp-Iks"/>
@@ -207,15 +206,44 @@
                     <view key="view" contentMode="scaleToFill" id="UPH-bo-unf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="0.21305534640000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sKM-RP-xbA">
+                                <rect key="frame" x="125" y="249" width="71" height="30"/>
+                                <color key="backgroundColor" red="0.19215686269999999" green="0.50196078430000002" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="ausloggen">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logout" destination="5wP-eU-bsf" eventType="touchUpInside" id="yuy-63-IPX"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4o5-XY-U16">
+                                <rect key="frame" x="110" y="38" width="100" height="100"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fob-f3-V14">
+                                <rect key="frame" x="121" y="165" width="79" height="30"/>
+                                <color key="backgroundColor" red="0.19215686269999999" green="0.50196078430000002" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="get qr code">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Notification" id="kj3-Eg-6sd"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
+                    <connections>
+                        <outlet property="getQRButton" destination="Fob-f3-V14" id="mcR-DJ-i5x"/>
+                        <outlet property="logoutButton" destination="sKM-RP-xbA" id="AFg-FI-eOd"/>
+                        <outlet property="qrImageView" destination="4o5-XY-U16" id="Z0T-B5-lXK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qcr-xS-Nig" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="612" y="1218"/>
+            <point key="canvasLocation" x="666" y="1218"/>
         </scene>
         <!--Galerie-->
         <scene sceneID="MJR-xm-jvc">

@@ -8,6 +8,9 @@
 
 import Foundation
 
+// global variable
+var savedWallpaper: NSMutableArray?
+
 class StatusChecker {
     class func hasUserId() -> Bool {
        let uid: AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey("user_id")
@@ -15,8 +18,12 @@ class StatusChecker {
     }
     
     class func remembered() -> Bool {
-        let remember: AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey("remember_me")
-        return (remember != nil)
+      let remember = NSUserDefaults.standardUserDefaults().objectForKey("remember_me") as? Bool
+      if remember != nil {
+        return remember!
+      } else {
+        return false
+      }
     }
 
   class func getQRImage() -> UIImage? {
@@ -32,6 +39,41 @@ class StatusChecker {
     }
   }
 
+  class func checkQRCode(userId: String) -> Bool {
+    let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as String
+    var filemanager = NSFileManager.defaultManager()
+    let qrImagePath = documentPath.stringByAppendingString("/qrCode.png")
+    if filemanager.fileExistsAtPath(qrImagePath) {
+      return true
+    } else {
+      getQRCode(userId)
+      return false
+    }
+  }
+
+  class func getQRCode(userId: String) {
+    let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as String
+    let qrImagePath = documentPath.stringByAppendingString("/qrCode.png")
+    dispatch_async(dispatch_get_main_queue()){
+      // download the QRCode
+      let manager = AFHTTPRequestOperationManager()
+      manager.GET("\(kServerUrl)qrcode/\(userId)", parameters: nil,
+        success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
+          let response = responseObject as NSDictionary
+          let base64str = response["Data"]!["qrcode"]! as String
+          let imageData = NSData(base64EncodedString: base64str, options:nil)
+          imageData?.writeToFile(qrImagePath, atomically: true)
+        },
+        failure: {(operation: AFHTTPRequestOperation!, error: NSError!) in
+          SVProgressHUD.showErrorWithStatus("Fehler beim unterladen QR Bild")
+        }
+      )
+
+    }
+
+  }
+
+
   class func saveQRImage(image: UIImage!) {
     let documentPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as String
     let qrImagePath = documentPath.stringByAppendingString("/qrCode.png")
@@ -43,18 +85,38 @@ class StatusChecker {
     var wallpaperIndex = NSUserDefaults.standardUserDefaults().integerForKey("wallpaperIndex")
     wallpaperIndex++
 
-
     let documentPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as String
-    let qrImagePath = documentPath.stringByAppendingString("/wallpaper_\(wallpaperIndex).png")
-    let imageData: NSData = UIImagePNGRepresentation(image)
-    imageData.writeToFile(qrImagePath, atomically: true)
+
+    // Original Image
+    let wpName = "wallpaper_\(wallpaperIndex).png"
+    let wpImagePath = documentPath.stringByAppendingString("/\(wpName)")
+    var imageData: NSData = UIImagePNGRepresentation(image)
+    imageData.writeToFile(wpImagePath, atomically: true)
+
+    // Thumbnail Image
+    let thumbSize = CGSizeMake(90, 90)
+    UIGraphicsBeginImageContext(thumbSize)
+    image.drawInRect(CGRectMake(0, 0, 90, 90))
+    var thumbImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+
+    let thumbName = "thumb_\(wallpaperIndex).png"
+    let thumbImagePath = documentPath.stringByAppendingString("/\(thumbName)")
+    imageData = UIImagePNGRepresentation(thumbImage)
+    imageData.writeToFile(thumbImagePath, atomically: true)
+
+    // update global variable savedWallpaper
+    var imgDict: NSDictionary = NSDictionary(objects: [wpName , thumbName], forKeys: [kKeyWallpapername, kKeyThumbname] )
+    savedWallpaper?.addObject(imgDict)
+
+    NSUserDefaults.standardUserDefaults().setObject(savedWallpaper, forKey: "wallpapers")
     NSUserDefaults.standardUserDefaults().setInteger(wallpaperIndex, forKey: "wallpaperIndex")
     NSUserDefaults.standardUserDefaults().synchronize()
   }
 
   class func getWallpaper(name: NSString) -> UIImage? {
     let documentPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as String
-    let imagePath = documentPath.stringByAppendingString("/wallpaper_\(name).png")
+    let imagePath = documentPath.stringByAppendingString("/\(name)")
     let filemanager = NSFileManager.defaultManager()
     if filemanager.fileExistsAtPath(imagePath) {
       let imageData = NSData(contentsOfFile: imagePath)

@@ -20,20 +20,25 @@ class GalleryController: UIViewController, UICollectionViewDataSource, UICollect
 
   @IBOutlet weak var addNewWPButton: UIButton!
 
-  var savedWallpaper: NSMutableArray?
-
   override func viewWillAppear(animated: Bool) {
     self.navigationController?.navigationBarHidden = true
+    allWallpapers.reloadData()
   }
 
   override func viewDidLoad() {
+    // Defined as Global Variable in StatusChecker.swift
     savedWallpaper =  NSUserDefaults.standardUserDefaults().objectForKey("wallpapers") as? NSMutableArray
-
+    if savedWallpaper == nil {
+      savedWallpaper = NSMutableArray()
+    }
   }
 
   deinit{
     // TODO: Save Wallpaper list
+    NSUserDefaults.standardUserDefaults().setObject(savedWallpaper, forKey: "wallpapers")
+    NSUserDefaults.standardUserDefaults().synchronize()
   }
+
 
   func setCollectionView() {
     let filemanager = NSFileManager.defaultManager()

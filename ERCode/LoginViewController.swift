@@ -11,76 +11,55 @@ import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var username: UITextField!
-    
-    @IBOutlet weak var password: UITextField!
-    
-    @IBOutlet weak var rememberMe: UISwitch!
-    
-    var user = User();
+  @IBOutlet weak var username: UITextField!
+  
+  @IBOutlet weak var password: UITextField!
+  
+  @IBOutlet weak var rememberMe: UISwitch!
+  
+  var user = User();
 
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    
-    
-    @IBAction func doLogin(sender: AnyObject) {
-        SVProgressHUD.show()
-        let manager = AFHTTPRequestOperationManager()
-        // default responseSerializer ist JSON Serializer
+  
+  override func viewDidLoad() {
+      super.viewDidLoad()
+  }
+  
+  
+  
+  @IBAction func doLogin(sender: AnyObject) {
+    SVProgressHUD.show()
+    let manager = AFHTTPRequestOperationManager()
+    // default responseSerializer ist JSON Serializer
 //        manager.responseSerializer = AFJSONResponseSerializer() as AFHTTPResponseSerializer
-        manager.requestSerializer.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        manager.POST(
-            "\(kServerUrl)login/",
-            parameters: ["username": username.text, "password": password.text],
-            success: { [unowned self] (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
-                var response: NSDictionary = responseObject as NSDictionary
-                let authenticated = response[kIsAuthenticated] as Bool
-                if authenticated {
-                    if self.rememberMe.on {
-                        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "remember_me")
-                        var userId = response[kLoginData]![kUID]! as String
-                        NSUserDefaults.standardUserDefaults().setObject(userId, forKey: "user_id")
-                        self.checkQRCode(userId)
-                    }
-                    SVProgressHUD.dismiss()
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                } else {
-                  SVProgressHUD.showErrorWithStatus("Login Failed")
-                }
-                
-            },
-            
-            failure: {(operation: AFHTTPRequestOperation!, error: NSError!) in
-                SVProgressHUD.dismiss()
-            }
-        )
-    }
-    
-    func checkQRCode(userId: String) {
+    manager.requestSerializer.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+    manager.POST(
+      "\(kServerUrl)login/",
+      parameters: ["username": username.text, "password": password.text],
+      success: { [unowned self] (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
+        var response: NSDictionary = responseObject as NSDictionary
+        let authenticated = response[kIsAuthenticated] as Bool
+        if authenticated {
+          //
+          var userId = response[kLoginData]![kUID]! as String
+          NSUserDefaults.standardUserDefaults().setObject(userId, forKey: "user_id")
+          StatusChecker.checkQRCode(userId)
 
-        dispatch_async(dispatch_get_main_queue()){
-            var filemanager = NSFileManager.defaultManager()
-            let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as String
-            let qrImagePath = documentPath.stringByAppendingString("/qrCode.png")
-            if !filemanager.fileExistsAtPath(qrImagePath) {
-                // download the QRCode
-                let manager = AFHTTPRequestOperationManager()
-                manager.GET("\(kServerUrl)qrcode/\(userId)", parameters: nil,
-                    success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
-                      let response = responseObject as NSDictionary
-                      let base64str = response["Data"]!["qrcode"]! as String
-                      let imageData = NSData(base64EncodedString: base64str, options:nil)
-                      imageData?.writeToFile(qrImagePath, atomically: true)
-                    },
-                    failure: {(operation: AFHTTPRequestOperation!, error: NSError!) in
-                    }
-                )
-            }
+          NSUserDefaults.standardUserDefaults().setBool(self.rememberMe.on, forKey: "remember_me")
+
+          SVProgressHUD.dismiss()
+          self.dismissViewControllerAnimated(true, completion: nil)
+        } else {
+          SVProgressHUD.showErrorWithStatus("Login Failed")
         }
-    }
+          
+      },
+      
+      failure: {(operation: AFHTTPRequestOperation!, error: NSError!) in
+        SVProgressHUD.dismiss()
+      }
+    )
+  }
+  
 
   func textFieldShouldReturn(textField: UITextField) -> Bool {
     textField.resignFirstResponder()
