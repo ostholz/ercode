@@ -13,13 +13,20 @@ class NotificationController: UIViewController {
   @IBOutlet weak var qrImageView: UIImageView!
   @IBOutlet weak var getQRButton: UIButton!
   @IBOutlet weak var logoutButton: UIButton!
-    
+  @IBOutlet weak var erCodeLabel: UILabel!
+
   override func viewDidLoad() {
     var qrImage = StatusChecker.getQRImage()
     if qrImage != nil {
       qrImageView.image = qrImage
       getQRButton.alpha = 0.0
     }
+
+    let ercode = NSUserDefaults.standardUserDefaults().objectForKey("ercode") as? String
+    if ercode != nil {
+      erCodeLabel.text = ercode
+    }
+
   }
 
   @IBAction func logout() {

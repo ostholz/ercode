@@ -9,10 +9,11 @@
 import UIKit
 
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
-
+  var loginShowed_temp = false
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
       // Override point for customization after application launch.
@@ -22,20 +23,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var controllers = [UIViewController]()
 
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let notifVC = storyboard.instantiateViewControllerWithIdentifier("Notification") as UIViewController
     let mainVC = storyboard.instantiateViewControllerWithIdentifier("Profile") as UIViewController
     let wallpaperVC = storyboard.instantiateViewControllerWithIdentifier("Galerie") as UIViewController
     let naviVC = UINavigationController(rootViewController: wallpaperVC)
     let scanVC = StationViewController(nibName: "StationViewController", bundle: NSBundle.mainBundle())
-    let notifVC = storyboard.instantiateViewControllerWithIdentifier("Notification") as UIViewController
 
+    controllers.append(notifVC)
     controllers.append(mainVC)
     controllers.append(naviVC)
     controllers.append(scanVC)
-    controllers.append(notifVC)
 
     tabController.setViewControllers(controllers, animated: false)
     window!.rootViewController = tabController
     window!.makeKeyAndVisible()
+
+    if !StatusChecker.remembered() {
+      if  !loginShowed_temp {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginVC = storyboard.instantiateViewControllerWithIdentifier("LoginVC") as UIViewController
+        tabController.presentViewController(loginVC, animated: false, completion: nil)
+        loginShowed_temp = true
+      }
+    }
+
 
     return true
   }

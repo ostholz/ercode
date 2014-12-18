@@ -42,12 +42,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
           //
           var userId = response[kLoginData]![kUID]! as String
           NSUserDefaults.standardUserDefaults().setObject(userId, forKey: "user_id")
-          StatusChecker.checkQRCode(userId)
+          if !StatusChecker.checkQRCode(userId) {
+            // download QR Image
+            self.downloadQRCode(userId)
+          }
 
           NSUserDefaults.standardUserDefaults().setBool(self.rememberMe.on, forKey: "remember_me")
 
-          SVProgressHUD.dismiss()
-          self.dismissViewControllerAnimated(true, completion: nil)
         } else {
           SVProgressHUD.showErrorWithStatus("Login Failed")
         }
@@ -58,6 +59,37 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         SVProgressHUD.dismiss()
       }
     )
+  }
+
+
+  func downloadQRCode(userId: String) {
+
+    let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as String
+    let qrImagePath = documentPath.stringByAppendingString("/qrCode.png")
+    dispatch_async(dispatch_get_main_queue()){
+      // download the QRCode
+      let manager = AFHTTPRequestOperationManager()
+      manager.GET("\(kServerUrl)user/data/\(userId)", parameters: nil,
+        success: {[unowned self] (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
+          let response = responseObject as NSDictionary
+          let base64str = response["Data"]?["qrcode"]! as String
+          // save QR Code
+          let imageData = NSData(base64EncodedString: base64str, options:nil)
+          imageData?.writeToFile(qrImagePath, atomically: true)
+
+          // save ER Code
+          let erCodeStr = response["Data"]?["ercode"] as NSString
+          NSUserDefaults.standardUserDefaults().setObject(erCodeStr, forKey: "ercode")
+          self.dismissViewControllerAnimated(true, completion: nil)
+
+          SVProgressHUD.dismiss()
+        },
+        failure: {(operation: AFHTTPRequestOperation!, error: NSError!) in
+          SVProgressHUD.showErrorWithStatus("Fehler beim unterladen QR Bild")
+        }
+      )
+      
+    }
   }
   
 

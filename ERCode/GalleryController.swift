@@ -21,7 +21,8 @@ class GalleryController: UIViewController, UICollectionViewDataSource, UICollect
   @IBOutlet weak var addNewWPButton: UIButton!
 
   override func viewWillAppear(animated: Bool) {
-    self.navigationController?.navigationBarHidden = true
+//    self.navigationController?.navigationBarHidden = true
+    self.title = "WALLPAPER"
     allWallpapers.reloadData()
   }
 
@@ -31,6 +32,10 @@ class GalleryController: UIViewController, UICollectionViewDataSource, UICollect
     if savedWallpaper == nil {
       savedWallpaper = NSMutableArray()
     }
+
+    // right bar button
+//    let plusButton = UIButton.buttonWithType(UIButtonType.ContactAdd)
+//    let buttonItem = UIButton
   }
 
   deinit{

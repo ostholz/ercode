@@ -46,7 +46,7 @@ class StatusChecker {
     if filemanager.fileExistsAtPath(qrImagePath) {
       return true
     } else {
-      getQRCode(userId)
+//      getQRCode(userId)
       return false
     }
   }
@@ -57,12 +57,18 @@ class StatusChecker {
     dispatch_async(dispatch_get_main_queue()){
       // download the QRCode
       let manager = AFHTTPRequestOperationManager()
-      manager.GET("\(kServerUrl)qrcode/\(userId)", parameters: nil,
+      manager.GET("\(kServerUrl)user/data/\(userId)", parameters: nil,
         success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
           let response = responseObject as NSDictionary
-          let base64str = response["Data"]!["qrcode"]! as String
+          let base64str = response["Data"]?["qrcode"]! as String
+          // save QR Code
           let imageData = NSData(base64EncodedString: base64str, options:nil)
           imageData?.writeToFile(qrImagePath, atomically: true)
+
+          // save ER Code
+          let erCodeStr = response["Data"]?["ercode"] as NSString
+          NSUserDefaults.standardUserDefaults().setObject(erCodeStr, forKey: "ercode")
+
         },
         failure: {(operation: AFHTTPRequestOperation!, error: NSError!) in
           SVProgressHUD.showErrorWithStatus("Fehler beim unterladen QR Bild")
