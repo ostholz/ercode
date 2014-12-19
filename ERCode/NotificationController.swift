@@ -14,24 +14,52 @@ class NotificationController: UIViewController {
   @IBOutlet weak var getQRButton: UIButton!
   @IBOutlet weak var logoutButton: UIButton!
   @IBOutlet weak var erCodeLabel: UILabel!
+  @IBOutlet weak var summaryLabel: UILabel!
+  @IBOutlet weak var saveQRButton: UIButton!
+
+  @IBOutlet weak var guideButton: UIButton!
 
   override func viewDidLoad() {
-    var qrImage = StatusChecker.getQRImage()
-    if qrImage != nil {
-      qrImageView.image = qrImage
-      getQRButton.alpha = 0.0
-    }
 
     let ercode = NSUserDefaults.standardUserDefaults().objectForKey("ercode") as? String
     if ercode != nil {
       erCodeLabel.text = ercode
     }
 
+    if !StatusChecker.checkQRCode() {
+      let uid = NSUserDefaults.standardUserDefaults().objectForKey("user_id") as? NSString
+      if uid != nil {
+        StatusChecker.downloadQRCode(uid!, callback: {(img: UIImage) in
+          self.qrImageView.image = img
+          println("download QR Code callback called")
+        })
+      }
+
+//      StatusChecker.downloadQRCode(uid, callback: nil)
+    }
+  }
+
+  override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+    StatusChecker.checkLoginStatus(self)
   }
 
   @IBAction func logout() {
     NSUserDefaults.standardUserDefaults().setBool(false, forKey: "remember_me")
+    loggedIn = false
+
+    StatusChecker.checkLoginStatus(self)
   }
+
+  @IBAction func saveQRintoPhotos(sender: AnyObject) {
+    let qrImage = StatusChecker.getQRImage()
+    UIImageWriteToSavedPhotosAlbum(qrImage, nil, nil, nil)
+  }
+
+  @IBAction func showGuide(sender: AnyObject) {
+
+  }
+
 
   /*
   func initTable() {

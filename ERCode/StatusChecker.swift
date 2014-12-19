@@ -12,19 +12,31 @@ import Foundation
 var savedWallpaper: NSMutableArray?
 
 class StatusChecker {
-    class func hasUserId() -> Bool {
-       let uid: AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey("user_id")
-        return (uid != nil)
-    }
-    
-    class func remembered() -> Bool {
-      let remember = NSUserDefaults.standardUserDefaults().objectForKey("remember_me") as? Bool
-      if remember != nil {
-        return remember!
-      } else {
-        return false
+
+  class func checkLoginStatus(controller: UIViewController) {
+    if !StatusChecker.remembered() {
+      if !loggedIn {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginVC = storyboard.instantiateViewControllerWithIdentifier("LoginVC") as UIViewController
+        controller.presentViewController(loginVC, animated: false, completion: nil)
       }
     }
+  }
+
+
+  class func hasUserId() -> Bool {
+     let uid: AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey("user_id")
+      return (uid != nil)
+  }
+  
+  class func remembered() -> Bool {
+    let remember = NSUserDefaults.standardUserDefaults().objectForKey("remember_me") as? Bool
+    if remember != nil {
+      return remember!
+    } else {
+      return false
+    }
+  }
 
   class func getQRImage() -> UIImage? {
     let documentPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as String
@@ -39,7 +51,7 @@ class StatusChecker {
     }
   }
 
-  class func checkQRCode(userId: String) -> Bool {
+  class func checkQRCode() -> Bool {
     let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as String
     var filemanager = NSFileManager.defaultManager()
     let qrImagePath = documentPath.stringByAppendingString("/qrCode.png")
@@ -51,12 +63,13 @@ class StatusChecker {
     }
   }
 
-  class func getQRCode(userId: String) {
+  class func downloadQRCode(userId: String, callback: ((image: UIImage) -> Void)?) {
     let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as String
     let qrImagePath = documentPath.stringByAppendingString("/qrCode.png")
     dispatch_async(dispatch_get_main_queue()){
       // download the QRCode
       let manager = AFHTTPRequestOperationManager()
+      manager.requestSerializer.setValue(wsSessionid, forHTTPHeaderField: kPHPSession)
       manager.GET("\(kServerUrl)user/data/\(userId)", parameters: nil,
         success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
           let response = responseObject as NSDictionary
@@ -67,11 +80,18 @@ class StatusChecker {
 
           // save ER Code
           let erCodeStr = response["Data"]?["ercode"] as NSString
+
+          println("success download QR Code")
           NSUserDefaults.standardUserDefaults().setObject(erCodeStr, forKey: "ercode")
+          if callback != nil {
+            let img = UIImage(data: imageData!)
+            callback!(image: img!)
+          }
 
         },
         failure: {(operation: AFHTTPRequestOperation!, error: NSError!) in
           SVProgressHUD.showErrorWithStatus("Fehler beim unterladen QR Bild")
+          println("errow with download QR Code")
         }
       )
 

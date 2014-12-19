@@ -38,16 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     window!.rootViewController = tabController
     window!.makeKeyAndVisible()
 
-    if !StatusChecker.remembered() {
-      if  !loginShowed_temp {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let loginVC = storyboard.instantiateViewControllerWithIdentifier("LoginVC") as UIViewController
-        tabController.presentViewController(loginVC, animated: false, completion: nil)
-        loginShowed_temp = true
-      }
-    }
-
-
     return true
   }
 

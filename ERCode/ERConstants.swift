@@ -10,6 +10,8 @@ let kServerUrl = "http://ercode.i2dm.de/"
 
 let kIsAuthenticated = "IsAuthenticated"
 let kLoginData = "Data"
+let kCookie = "Cookie"
+let kPHPSession = "PHPSESSID"
 let kErrCode = "ErrCode"
 let kErrMessage = "ErrMessage"
 let kUserInfo = "anmeldung/grunddaten_verwalten.html"

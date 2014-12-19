@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F04234A92B03DC8B0253ADD4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C320C6BBC9A364D13B4A836D /* libPods.a */; };
+		F55B2BAB1A443B820016D561 /* WebServiceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55B2BAA1A443B820016D561 /* WebServiceClient.swift */; };
 		F55ED49C19E7C93500199C3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55ED49B19E7C93500199C3F /* AppDelegate.swift */; };
 		F55ED49E19E7C93500199C3F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55ED49D19E7C93500199C3F /* ViewController.swift */; };
 		F55ED4A119E7C93500199C3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F55ED49F19E7C93500199C3F /* Main.storyboard */; };
@@ -78,6 +79,7 @@
 		9C2E438CE3B2B205B6431B48 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C320C6BBC9A364D13B4A836D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0FF41CF095092B25700EEAF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		F55B2BAA1A443B820016D561 /* WebServiceClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceClient.swift; sourceTree = "<group>"; };
 		F55ED49619E7C93500199C3F /* ERCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ERCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F55ED49A19E7C93500199C3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F55ED49B19E7C93500199C3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				F5F539A319EEC63B00524A39 /* StatusChecker.swift */,
+				F55B2BAA1A443B820016D561 /* WebServiceClient.swift */,
 			);
 			name = utilities;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 				F5F539A919EFCAF500524A39 /* User.swift in Sources */,
 				F5B7D4C419FA7F1A00A94BDC /* WallpaperController.swift in Sources */,
 				F577B5291A07B67E00DB74EC /* NotificationController.swift in Sources */,
+				F55B2BAB1A443B820016D561 /* WebServiceClient.swift in Sources */,
 				F59D118A19FA638F00FAD937 /* ERConstants.swift in Sources */,
 				F5F539A419EEC63B00524A39 /* StatusChecker.swift in Sources */,
 				F5F539AD19F0021500524A39 /* Contact.swift in Sources */,
