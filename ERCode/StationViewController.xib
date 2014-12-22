@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="callStationButton" destination="7oO-TV-9wK" id="vBq-sI-uDH"/>
                 <outlet property="ercodeLabel" destination="vMl-rs-po4" id="wnS-Og-Xao"/>
+                <outlet property="geoLocationLabel" destination="4bx-BS-PRa" id="wm1-oY-Qjm"/>
                 <outlet property="smsButton" destination="qAI-By-so5" id="9kZ-w8-uwv"/>
                 <outlet property="stationsTable" destination="olY-ie-1sx" id="bLU-Qt-msn"/>
                 <outlet property="view" destination="iN0-l3-epB" id="oRI-yk-8YX"/>
@@ -29,7 +30,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="olY-ie-1sx">
-                    <rect key="frame" x="0.0" y="79" width="600" height="416"/>
+                    <rect key="frame" x="0.0" y="95" width="600" height="400"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="YPZ-sa-gcP"/>
@@ -72,7 +73,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMl-rs-po4" userLabel="ercodeLabel">
-                    <rect key="frame" x="20" y="48" width="560" height="21"/>
+                    <rect key="frame" x="20" y="66" width="560" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="akc-os-Pke"/>
                         <constraint firstAttribute="height" constant="21" id="gKa-B3-du4"/>
@@ -98,15 +99,23 @@
                         <action selector="sendSMS:" destination="-1" eventType="touchUpInside" id="d4f-Qf-UqW"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bx-BS-PRa">
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="qAI-By-so5" firstAttribute="top" secondItem="WpK-GR-0aJ" secondAttribute="top" id="15s-ac-9jD"/>
                 <constraint firstAttribute="trailing" secondItem="olY-ie-1sx" secondAttribute="trailing" id="3mt-9e-qf0"/>
                 <constraint firstItem="tfg-pb-ogB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="7d3-BN-sZb"/>
+                <constraint firstItem="4bx-BS-PRa" firstAttribute="top" secondItem="tfg-pb-ogB" secondAttribute="bottom" constant="8" id="9kD-2p-uZb"/>
                 <constraint firstAttribute="trailing" secondItem="lLP-PA-sVW" secondAttribute="trailing" id="DNg-KE-Izv"/>
+                <constraint firstAttribute="centerX" secondItem="4bx-BS-PRa" secondAttribute="centerX" id="I52-cB-UEo"/>
                 <constraint firstItem="WpK-GR-0aJ" firstAttribute="top" secondItem="7oO-TV-9wK" secondAttribute="top" id="ISw-Ut-JCp"/>
                 <constraint firstItem="WpK-GR-0aJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="MXb-DK-RE9"/>
+                <constraint firstItem="4bx-BS-PRa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="MiW-Vb-y4J"/>
                 <constraint firstItem="7oO-TV-9wK" firstAttribute="leading" secondItem="qAI-By-so5" secondAttribute="trailing" constant="22" id="PvA-4o-rSi"/>
                 <constraint firstItem="olY-ie-1sx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="T5d-YG-pVQ"/>
                 <constraint firstItem="tfg-pb-ogB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="TSg-cZ-KXn"/>
@@ -121,9 +130,18 @@
                 <constraint firstItem="vMl-rs-po4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="kMj-T6-7Dm"/>
                 <constraint firstItem="lLP-PA-sVW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pTc-9J-ECI"/>
                 <constraint firstItem="WpK-GR-0aJ" firstAttribute="top" secondItem="olY-ie-1sx" secondAttribute="bottom" constant="5" id="qIt-Z7-eQF"/>
+                <constraint firstItem="olY-ie-1sx" firstAttribute="top" secondItem="vMl-rs-po4" secondAttribute="bottom" constant="8" id="rmB-Dz-Vx5"/>
+                <constraint firstItem="vMl-rs-po4" firstAttribute="top" secondItem="4bx-BS-PRa" secondAttribute="bottom" constant="8" id="uHn-eG-lD2"/>
                 <constraint firstAttribute="bottom" secondItem="WpK-GR-0aJ" secondAttribute="bottom" constant="56" id="ukD-eu-rUm"/>
+                <constraint firstAttribute="trailing" secondItem="4bx-BS-PRa" secondAttribute="trailing" id="vmx-XD-XAG"/>
                 <constraint firstItem="lLP-PA-sVW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="yBy-Lq-Ju7"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="WBd-0w-WZC"/>
+                    <exclude reference="c7m-H4-XNW"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="504" y="454"/>
         </view>
     </objects>

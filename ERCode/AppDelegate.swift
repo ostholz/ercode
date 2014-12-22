@@ -38,6 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     window!.rootViewController = tabController
     window!.makeKeyAndVisible()
 
+    WebServiceClient.updateSession()
+
     return true
   }
 

@@ -19,6 +19,7 @@ class StationViewController: UIViewController, UITableViewDataSource,
   @IBOutlet weak var callStationButton: UIButton!
   @IBOutlet weak var smsButton: UIButton!
   @IBOutlet weak var ercodeLabel: UILabel!
+  @IBOutlet weak var geoLocationLabel: UILabel!
 
   var controlStations : [ControlStation] = []
   let locationManager = CLLocationManager()
@@ -26,7 +27,8 @@ class StationViewController: UIViewController, UITableViewDataSource,
   var scannedERcode: String?
 
 
-  var activCondition = 0
+//  var activCondition = 0
+  var valaidERCodeScanned = false
   var selectedStation : ControlStation?
 
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -38,6 +40,11 @@ class StationViewController: UIViewController, UITableViewDataSource,
 
   required init(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
+  }
+
+  override func viewWillDisappear(animated: Bool) {
+    valaidERCodeScanned = false
+
   }
 
   override func viewDidLoad() {
@@ -77,7 +84,8 @@ class StationViewController: UIViewController, UITableViewDataSource,
 
   //  MARK: - UITableView Delegate Methods
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return controlStations.count
+    // only the first 5 Controlstations
+    return 5
   }
 
   func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -98,9 +106,6 @@ class StationViewController: UIViewController, UITableViewDataSource,
   }
 
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    if selectedStation == nil {
-      activCondition++
-    }
     selectedStation = controlStations[indexPath.row]
     setButtonStatus()
   }
@@ -114,7 +119,7 @@ class StationViewController: UIViewController, UITableViewDataSource,
     locationManager.stopUpdatingLocation()
 
     currentLocation = (locations as NSArray).lastObject as? CLLocation
-
+    geoLocationLabel.text = locationToString(currentLocation!)
 
     // sort Stations with distance
     for station in controlStations {
@@ -130,6 +135,29 @@ class StationViewController: UIViewController, UITableViewDataSource,
     }
 
     stationsTable.reloadData()
+
+  }
+
+  func locationToString(location: CLLocation) -> String {
+    let lat : Double = location.coordinate.latitude
+    let lng : Double = location.coordinate.longitude
+
+    var latSeconds: Int = Int( round(lat * 3600) )
+    let latDegrees: Int = Int( latSeconds / 3600 )
+    latSeconds = abs(latSeconds % 3600 )
+    var latMinutes = latSeconds / 60
+    latSeconds %= 60
+
+    var lngSeconds: Int = Int( round(lng * 3600))
+    let lngDegrees = Int(lngSeconds / 3600)
+    lngSeconds = abs(lngSeconds % 3600)
+    let lngMinutes = lngSeconds / 60
+    lngSeconds %= 60
+
+    var latDirection = (lat >= 0) ? "N" : "S"
+    var lngDirection = (lng >= 0) ? "E" : "W"
+
+    return "\(latDirection) \(latDegrees)° \(latMinutes)' \(latSeconds)\", \(lngDirection) \(lngDegrees)° \(lngMinutes)' \(lngSeconds)\" "
 
   }
 
@@ -151,9 +179,6 @@ class StationViewController: UIViewController, UITableViewDataSource,
   }
 
   @IBAction func startScanQRImage(sender: AnyObject) {
-    if activCondition > 0 {
-      activCondition--
-    }
     let scanController = ScanViewController()
     scanController.parentController = self
 
@@ -198,7 +223,7 @@ class StationViewController: UIViewController, UITableViewDataSource,
     let manager = AFHTTPRequestOperationManager()
     // default responseSerializer ist JSON Serializer
     manager.responseSerializer = AFJSONResponseSerializer() as AFHTTPResponseSerializer
-    println("\(kServerUrl)ercode/check/\(code)")
+    manager.requestSerializer.setValue(wsSessionid, forHTTPHeaderField: kPHPSession)
     manager.GET(
       "\(kServerUrl)ercode/check/\(code)",
       parameters: nil,
@@ -207,7 +232,7 @@ class StationViewController: UIViewController, UITableViewDataSource,
         if response["ercode"] as Bool {
           self.scannedERcode = code
           self.ercodeLabel.text = code
-          self.activCondition++
+          self.valaidERCodeScanned = true
 
           self.setButtonStatus()
 
@@ -219,7 +244,7 @@ class StationViewController: UIViewController, UITableViewDataSource,
           UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
 
         } else {
-          self.ercodeLabel.text = "Keine gültige ER-Code"
+          self.ercodeLabel.text = "Kein gültiger ER-Code"
         }
         SVProgressHUD.dismiss()
 
@@ -234,13 +259,13 @@ class StationViewController: UIViewController, UITableViewDataSource,
 
 
   func setButtonStatus() {
-    var enable = activCondition == 2 ? true : false
+    var enable = (valaidERCodeScanned && selectedStation != nil)
 
     callStationButton.enabled = enable
     smsButton.enabled = enable
     if enable {
-      callStationButton.backgroundColor = UIColor.greenColor()
-      smsButton.backgroundColor = UIColor.greenColor()
+      callStationButton.backgroundColor = UIColor(red: 11 / 255, green: 185 / 255, blue: 11 / 255, alpha: 1)
+      smsButton.backgroundColor = UIColor(red: 11 / 255, green: 185 / 255, blue: 11 / 255, alpha: 1)
     } else {
       callStationButton.backgroundColor = UIColor.grayColor()
       smsButton.backgroundColor = UIColor.grayColor()

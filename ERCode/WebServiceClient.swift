@@ -32,10 +32,7 @@ class WebServiceClient {
           //
           loggedIn = true
           var userId = response[kLoginData]![kUID]! as String
-          wsSessionid = response[kCookie]![kPHPSession]! as String
-
-          println("get userId: \(userId) and sessionId: \(wsSessionid)")
-          println("downloading QR Code")
+          wsSessionid = response[kCookie]![kPHPSession]! as? String
 
           NSUserDefaults.standardUserDefaults().setObject(userId, forKey: "user_id")
           if !StatusChecker.checkQRCode() {
@@ -58,7 +55,44 @@ class WebServiceClient {
 //        SVProgressHUD.dismiss()
       }
     )
+  }
+
+
+  /*
+    update wsSessionid
+  */
+  class func updateSession() {
+    let manager = AFHTTPRequestOperationManager()
+    // default responseSerializer ist JSON Serializer
+    //        manager.responseSerializer = AFJSONResponseSerializer() as AFHTTPResponseSerializer
+    let credential = NSUserDefaults.standardUserDefaults().objectForKey("credential") as? NSDictionary
+
+    if credential != nil {
+      let username = credential!["username"] as String
+      let password = credential!["password"] as String
+
+      manager.requestSerializer.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+      manager.POST(
+        "\(kServerUrl)login/",
+        parameters: ["username": username, "password": password],
+        success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
+          var response: NSDictionary = responseObject as NSDictionary
+          let authenticated = response[kIsAuthenticated] as Bool
+          if authenticated {
+            wsSessionid = response[kCookie]![kPHPSession]! as? String
+            println("session updated")
+          }
+
+        },
+
+        failure: {(operation: AFHTTPRequestOperation!, error: NSError!) in
+          //        SVProgressHUD.dismiss()
+        }
+      )
+
+    }
 
 
   }
+
 }
