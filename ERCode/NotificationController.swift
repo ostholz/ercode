@@ -8,7 +8,7 @@
 
 import Foundation
 
-class NotificationController: UIViewController {
+class NotificationController: UIViewController, UITextFieldDelegate {
 
   @IBOutlet weak var qrImageView: UIImageView!
   @IBOutlet weak var getQRButton: UIButton!
@@ -18,6 +18,7 @@ class NotificationController: UIViewController {
   @IBOutlet weak var saveQRButton: UIButton!
 
   @IBOutlet weak var guideButton: UIButton!
+  @IBOutlet weak var testPhoneNr: UITextField!
 
   override func viewDidLoad() {
 
@@ -31,11 +32,12 @@ class NotificationController: UIViewController {
       if uid != nil {
         StatusChecker.downloadQRCode(uid!, callback: {(img: UIImage) in
           self.qrImageView.image = img
-          println("download QR Code callback called")
         })
       }
 
 //      StatusChecker.downloadQRCode(uid, callback: nil)
+    } else {
+      self.qrImageView.image = StatusChecker.getQRImage()
     }
   }
 
@@ -60,6 +62,10 @@ class NotificationController: UIViewController {
 
   }
 
+  func textFieldShouldReturn(textField: UITextField) -> Bool {
+    textField.resignFirstResponder()
+    return false
+  }
 
   /*
   func initTable() {

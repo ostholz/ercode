@@ -81,7 +81,6 @@ class StatusChecker {
           // save ER Code
           let erCodeStr = response["Data"]?["ercode"] as NSString
 
-          println("success download QR Code")
           NSUserDefaults.standardUserDefaults().setObject(erCodeStr, forKey: "ercode")
           if callback != nil {
             let img = UIImage(data: imageData!)
