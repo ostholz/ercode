@@ -120,9 +120,13 @@ class StatusChecker {
     imageData.writeToFile(wpImagePath, atomically: true)
 
     // Thumbnail Image
-    let thumbSize = CGSizeMake(90, 90)
+    let thumbSize = CGSizeMake(kWPCellLength, kWPCellLength)
     UIGraphicsBeginImageContext(thumbSize)
-    image.drawInRect(CGRectMake(0, 0, 90, 90))
+
+    var dyHeight = image.size.height * kWPCellLength / image.size.width
+
+
+    image.drawInRect(CGRectMake(0, (dyHeight - kWPCellLength) / -2 , kWPCellLength, dyHeight))
     var thumbImage = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
 
@@ -133,7 +137,7 @@ class StatusChecker {
 
     // update global variable savedWallpaper
     var imgDict: NSDictionary = NSDictionary(objects: [wpName , thumbName], forKeys: [kKeyWallpapername, kKeyThumbname] )
-    savedWallpaper?.addObject(imgDict)
+    savedWallpaper?.insertObject(imgDict, atIndex: 0)
 
     NSUserDefaults.standardUserDefaults().setObject(savedWallpaper, forKey: "wallpapers")
     NSUserDefaults.standardUserDefaults().setInteger(wallpaperIndex, forKey: "wallpaperIndex")

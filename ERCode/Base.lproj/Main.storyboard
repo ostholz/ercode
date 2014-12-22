@@ -388,18 +388,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXp-Wk-CfP">
-                                <rect key="frame" x="250" y="65" width="46" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="+">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="createNewWallpaper:" destination="H1F-83-kVz" eventType="touchUpInside" id="hAZ-Ax-Itf"/>
-                                </connections>
-                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RLU-OK-wVh">
-                                <rect key="frame" x="10" y="90" width="300" height="419"/>
+                                <rect key="frame" x="10" y="0.0" width="300" height="509"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="mEW-3t-2Qk"/>
@@ -435,15 +425,14 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="RLU-OK-wVh" firstAttribute="top" secondItem="I8i-7o-v8R" secondAttribute="topMargin" id="6PL-iq-lKX"/>
                             <constraint firstItem="RLU-OK-wVh" firstAttribute="leading" secondItem="I8i-7o-v8R" secondAttribute="leading" constant="10" id="9bi-10-2Oj"/>
                             <constraint firstItem="dgx-Mr-VJ8" firstAttribute="top" secondItem="RLU-OK-wVh" secondAttribute="bottom" constant="10" id="FAA-Nl-wl2"/>
                             <constraint firstAttribute="trailing" secondItem="RLU-OK-wVh" secondAttribute="trailing" constant="10" id="cEI-Ow-w4k"/>
-                            <constraint firstItem="RLU-OK-wVh" firstAttribute="top" secondItem="fV2-Sz-vcH" secondAttribute="bottom" constant="70" id="uxv-6T-Heo"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Gelerie" image="galerie.png" id="6HR-gI-j9N"/>
+                    <tabBarItem key="tabBarItem" title="Wallpaper" image="galerie.png" id="6HR-gI-j9N" userLabel="Wallpaper"/>
                     <connections>
-                        <outlet property="addNewWPButton" destination="nXp-Wk-CfP" id="9Wr-AO-kY6"/>
                         <outlet property="allWallpapers" destination="RLU-OK-wVh" id="ssT-hf-ZJW"/>
                     </connections>
                 </viewController>

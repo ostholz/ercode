@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		F04234A92B03DC8B0253ADD4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C320C6BBC9A364D13B4A836D /* libPods.a */; };
 		F55B2BAB1A443B820016D561 /* WebServiceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55B2BAA1A443B820016D561 /* WebServiceClient.swift */; };
+		F55B2BAF1A4822C60016D561 /* add_wp_cell.png in Resources */ = {isa = PBXBuildFile; fileRef = F55B2BAC1A4822C60016D561 /* add_wp_cell.png */; };
+		F55B2BB01A4822C60016D561 /* add_wp_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F55B2BAD1A4822C60016D561 /* add_wp_icon.png */; };
+		F55B2BB11A4822C60016D561 /* add_wp_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F55B2BAE1A4822C60016D561 /* add_wp_icon@2x.png */; };
 		F55ED49C19E7C93500199C3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55ED49B19E7C93500199C3F /* AppDelegate.swift */; };
 		F55ED49E19E7C93500199C3F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55ED49D19E7C93500199C3F /* ViewController.swift */; };
 		F55ED4A119E7C93500199C3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F55ED49F19E7C93500199C3F /* Main.storyboard */; };
@@ -80,6 +83,9 @@
 		C320C6BBC9A364D13B4A836D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0FF41CF095092B25700EEAF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F55B2BAA1A443B820016D561 /* WebServiceClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceClient.swift; sourceTree = "<group>"; };
+		F55B2BAC1A4822C60016D561 /* add_wp_cell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = add_wp_cell.png; path = ERCode/images/add_wp_cell.png; sourceTree = "<group>"; };
+		F55B2BAD1A4822C60016D561 /* add_wp_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = add_wp_icon.png; path = ERCode/images/add_wp_icon.png; sourceTree = "<group>"; };
+		F55B2BAE1A4822C60016D561 /* add_wp_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "add_wp_icon@2x.png"; path = "ERCode/images/add_wp_icon@2x.png"; sourceTree = "<group>"; };
 		F55ED49619E7C93500199C3F /* ERCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ERCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F55ED49A19E7C93500199C3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F55ED49B19E7C93500199C3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -313,6 +319,9 @@
 		F5F5397219EEA4FB00524A39 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				F55B2BAC1A4822C60016D561 /* add_wp_cell.png */,
+				F55B2BAD1A4822C60016D561 /* add_wp_icon.png */,
+				F55B2BAE1A4822C60016D561 /* add_wp_icon@2x.png */,
 				F5B913271A42FB0700A6D0DD /* home.png */,
 				F5B913281A42FB0700A6D0DD /* home@2x.png */,
 				F5B913291A42FB0700A6D0DD /* shop.png */,
@@ -437,6 +446,7 @@
 			files = (
 				F57B7D1C1A3EDC4400E6ED70 /* galerie@2x.png in Resources */,
 				F57B7D161A3EDB6100E6ED70 /* nutzer@2x.png in Resources */,
+				F55B2BAF1A4822C60016D561 /* add_wp_cell.png in Resources */,
 				F57B7CFB1A39A41500E6ED70 /* LoginViewController.xib in Resources */,
 				F57B7D171A3EDB6100E6ED70 /* scan.png in Resources */,
 				F5B9132E1A42FB0700A6D0DD /* shop@2x.png in Resources */,
@@ -452,9 +462,11 @@
 				F59D118819F64A1000FAD937 /* pg.xib in Resources */,
 				F55ED4A619E7C93500199C3F /* LaunchScreen.xib in Resources */,
 				F57B7D181A3EDB6100E6ED70 /* scan@2x.png in Resources */,
+				F55B2BB11A4822C60016D561 /* add_wp_icon@2x.png in Resources */,
 				F57B7D041A39C9B300E6ED70 /* success.wav in Resources */,
 				F5F5397419EEA57500524A39 /* ErCodeLogo_unscannbar.png in Resources */,
 				F5B9132C1A42FB0700A6D0DD /* home@2x.png in Resources */,
+				F55B2BB01A4822C60016D561 /* add_wp_icon.png in Resources */,
 				F57B7D151A3EDB6100E6ED70 /* nutzer.png in Resources */,
 				F59D118519F557BA00FAD937 /* female-sign.jpg in Resources */,
 				F5B9132B1A42FB0700A6D0DD /* home.png in Resources */,

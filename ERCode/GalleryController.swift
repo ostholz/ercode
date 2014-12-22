@@ -12,17 +12,13 @@ class GalleryController: UIViewController, UICollectionViewDataSource, UICollect
   /*
   TODO: die Hintergrundbilder wurden (sollen) in ~/Documents/wallpapers/ gespeichert.
         die Thumbnaibilder wurde in ~/Documents/thumbs/ gespeichert.
-
-
   */
 
   @IBOutlet weak var allWallpapers: UICollectionView!
 
-  @IBOutlet weak var addNewWPButton: UIButton!
-
   override func viewWillAppear(animated: Bool) {
 //    self.navigationController?.navigationBarHidden = true
-    self.title = "WALLPAPER"
+    self.navigationController?.navigationBar.topItem?.title = "WALLPAPER"
     allWallpapers.reloadData()
   }
 
@@ -33,9 +29,15 @@ class GalleryController: UIViewController, UICollectionViewDataSource, UICollect
       savedWallpaper = NSMutableArray()
     }
 
+    if (savedWallpaper?.count == 0) {
+      savedWallpaper?.addObject(NSDictionary(objects: ["addNewWallpaper", "add_wp_cell.png"], forKeys: [kKeyWallpapername, kKeyThumbname]))
+    }
+
     // right bar button
-//    let plusButton = UIButton.buttonWithType(UIButtonType.ContactAdd)
-//    let buttonItem = UIButton
+    let rightBarButton = UIBarButtonItem(image: UIImage(named: "add_wp_icon.png"), style: UIBarButtonItemStyle.Plain,
+      target: self, action: "createNewWallpaper:")
+    self.navigationItem.rightBarButtonItem = rightBarButton
+
   }
 
   deinit{
@@ -74,23 +76,29 @@ class GalleryController: UIViewController, UICollectionViewDataSource, UICollect
     var imageview: UIImageView = cell.contentView.viewWithTag(101) as UIImageView // tag: 101
     let namedict: NSDictionary = savedWallpaper?[indexPath.row] as NSDictionary
     let wpname: NSString = namedict[kKeyThumbname] as NSString
-    imageview.image = StatusChecker.getWallpaper(wpname)
 
+    if wpname == "add_wp_cell.png" {
+      imageview.image = UIImage(named: "add_wp_cell.png")
+    } else {
+      imageview.image = StatusChecker.getWallpaper(wpname)
+    }
+
+//    cell.layer.borderColor = UIColor.grayColor().CGColor
+//    cell.layer.borderWidth = 1.0
     return cell
   }
 
-  func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 
+  func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    if indexPath.row == (savedWallpaper!.count - 1) {
+      createNewWallpaper(self)
+    } else {
+      
+    }
   }
 
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
-    if (savedWallpaper == nil){
-      return 0
-    }
-    else {
-      return savedWallpaper!.count
-    }
+    return savedWallpaper!.count
   }
 
 

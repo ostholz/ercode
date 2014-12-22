@@ -24,3 +24,5 @@ let kUID = "UID"
 let kErcode = "ercode"
 let kSessionID = "PHPSESSID"
 
+let kWPCellLength: CGFloat = 90.0
+

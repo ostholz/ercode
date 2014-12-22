@@ -112,6 +112,7 @@ class WallpaperController: UIViewController, UIImagePickerControllerDelegate, UI
 
     } else {
       qrCodeAdded = true
+      hintLabel.text = "QR-Code platzieren"
       // background Image can't changed
       button.enabled = false
       button.alpha = 0.0
@@ -139,8 +140,8 @@ class WallpaperController: UIViewController, UIImagePickerControllerDelegate, UI
 
       // change button text
       continueButton.setTitle("fertig", forState: UIControlState.Normal)
-      cancelButton.alpha = 1.0
-      cancelButton.enabled = true
+//      cancelButton.alpha = 1.0
+//      cancelButton.enabled = true
 
     }
     
@@ -190,7 +191,7 @@ class WallpaperController: UIViewController, UIImagePickerControllerDelegate, UI
     backgroundImageview!.addGestureRecognizer(pinchRecognizer)
 
     // change Hinttext 
-    hintLabel.text = "Das Hintergrundbild plazieren"
+    hintLabel.text = "Hintergrundbild platzieren"
     
     self.dismissViewControllerAnimated(true, completion: nil)
   }
