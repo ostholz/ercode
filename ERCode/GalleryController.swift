@@ -16,9 +16,15 @@ class GalleryController: UIViewController, UICollectionViewDataSource, UICollect
 
   @IBOutlet weak var allWallpapers: UICollectionView!
 
+  var imageslider = NSMutableArray()
+//  var swipeLeftRecognizer : UISwipeGestureRecognizer?
+//  var swipeRightRecognizer : UISwipeGestureRecognizer?
+//  var tapRecognizer : UITapGestureRecognizer?
+
   override func viewWillAppear(animated: Bool) {
 //    self.navigationController?.navigationBarHidden = true
     self.navigationController?.navigationBar.topItem?.title = "WALLPAPER"
+    self.navigationController?.navigationBar.topItem?
     allWallpapers.reloadData()
   }
 
@@ -38,6 +44,19 @@ class GalleryController: UIViewController, UICollectionViewDataSource, UICollect
       target: self, action: "createNewWallpaper:")
     self.navigationItem.rightBarButtonItem = rightBarButton
 
+    for p in 0...2 {
+      let swipeLeftRecognizer = UISwipeGestureRecognizer(target: self, action: "didSwipeLeft:")
+      let swipeRightRecognizer = UISwipeGestureRecognizer(target: self, action: "didSwipeRight:")
+      let tapRecognizer = UITapGestureRecognizer(target: self, action: "tapBackToMain:")
+
+      let imageView = UIImageView(frame: CGRectZero)
+      imageView.userInteractionEnabled = true
+      imageView.addGestureRecognizer(swipeLeftRecognizer)
+      imageView.addGestureRecognizer(swipeRightRecognizer)
+      imageView.addGestureRecognizer(tapRecognizer)
+
+      imageslider.addObject(imageView)
+    }
   }
 
   deinit{
@@ -59,6 +78,60 @@ class GalleryController: UIViewController, UICollectionViewDataSource, UICollect
 //      }
 //    }
 
+  }
+
+
+  func didSwipeLeft(recognizer: UISwipeGestureRecognizer) {
+    println("swipe left")
+  }
+
+  func didSwipeRight(recognizer: UISwipeGestureRecognizer) {
+    println("swipe right")
+  }
+
+  func tapBackToMain(recognizer: UITapGestureRecognizer) {
+
+    let currentIV = imageslider[1] as UIImageView
+
+    let thisWidth = self.view.bounds.width
+    let thisHeight = self.view.bounds.height
+
+    let maskview = self.view.viewWithTag(199)
+    maskview?.removeFromSuperview()
+    UIView.animateWithDuration(0.4, animations: {
+      currentIV.frame = CGRectMake(thisWidth / 2, thisHeight / 2, 0, 0)
+      }, completion: { [unowned self] (Bool) -> Void in
+        currentIV.removeFromSuperview()
+      }
+    )
+  }
+
+
+  func makeSlider(index: Int) {
+    let maskview = UIView(frame: self.view.bounds)
+    maskview.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.8)
+    maskview.tag = 199
+    self.view.addSubview(maskview)
+
+    if index == 0 {
+
+    }
+
+    let namedict = savedWallpaper?[index] as NSDictionary
+
+    let currentIV = imageslider[1] as UIImageView
+
+    currentIV.image = StatusChecker.getWallpaper(namedict[kKeyWallpapername] as NSString)
+    let thisWidth = self.view.bounds.width
+    let thisHeight = self.view.bounds.height
+
+    currentIV.frame = CGRectMake(thisWidth / 2, thisWidth / 2, 0, 0)
+
+    self.view.addSubview(currentIV)
+
+    UIView.animateWithDuration(0.4, animations: {
+      currentIV.frame = CGRectMake(0, 0, thisWidth, thisHeight)
+    })
   }
 
   //   MARK: - custom Methods
@@ -93,13 +166,14 @@ class GalleryController: UIViewController, UICollectionViewDataSource, UICollect
     if indexPath.row == (savedWallpaper!.count - 1) {
       createNewWallpaper(self)
     } else {
-      
+      makeSlider(indexPath.row)
     }
   }
 
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return savedWallpaper!.count
   }
+
 
 
 

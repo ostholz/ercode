@@ -14,8 +14,8 @@ class WallpaperController: UIViewController, UIImagePickerControllerDelegate, UI
   var qrCodeAdded = false
   var backgroundImageview: UIImageView?
   var qrCode: UIImageView?
-  var panRecognizer = UIPanGestureRecognizer()
-  var pinchRecognizer = UIPinchGestureRecognizer()
+  let panRecognizer = UIPanGestureRecognizer()
+  let pinchRecognizer = UIPinchGestureRecognizer()
   var currentScale: CGFloat = 1.0
   var lastScale: CGFloat = 0.0
     
