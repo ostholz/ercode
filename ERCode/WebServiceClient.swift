@@ -15,6 +15,7 @@ import Foundation
 var wsSessionid: String?
 var loggedIn = false
 var userData: NSDictionary?
+var testTelephoneNum : String?
 
 class WebServiceClient {
 

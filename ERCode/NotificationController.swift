@@ -69,7 +69,8 @@ class NotificationController: UIViewController, UITextFieldDelegate {
     let bloodIndex = userData![kBloodType] as String
     let showBloodType = userData![kShowBloodType] as String
     let bloodType = showBloodType == "1" ? self.getBloodType(bloodIndex.toInt()!) : ""
-    self.summaryLabel.text = "\(userData?[kShowOnApp]!) \n Blutgruppe \(bloodType)"
+    let txtToShow = userData![kShowOnApp] as String
+    self.summaryLabel.text = "\(txtToShow) \nBlutgruppe \(bloodType)"
   }
 
   @IBAction func logout() {
@@ -90,6 +91,7 @@ class NotificationController: UIViewController, UITextFieldDelegate {
 
   func textFieldShouldReturn(textField: UITextField) -> Bool {
     textField.resignFirstResponder()
+    testTelephoneNum = textField.text
     return false
   }
 
