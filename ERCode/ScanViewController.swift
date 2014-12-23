@@ -34,17 +34,21 @@ class ScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
       return
     }
 
+    self.view.backgroundColor = UIColor.whiteColor()
+
     var output = AVCaptureMetadataOutput()
     session.addOutput(output)
     output.metadataObjectTypes = [AVMetadataObjectTypeQRCode]
 
     output.setMetadataObjectsDelegate(self, queue: dispatch_get_main_queue())
 
+    let screenWidth = self.view.bounds.width
+    let screenHeight = self.view.bounds.height
 
     previewLayer = (AVCaptureVideoPreviewLayer.layerWithSession(session) as AVCaptureVideoPreviewLayer)
     previewLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill
-    previewLayer!.bounds = self.view.bounds
-    previewLayer!.position = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds))
+    previewLayer!.frame = CGRectMake(0, (screenHeight - screenWidth) / 2, screenWidth, screenWidth)
+//    previewLayer!.position = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds))
     /*
     boundingBox = ScanShapView(frame: self.view.bounds)
     boundingBox!.backgroundColor = UIColor.clearColor()
@@ -52,10 +56,22 @@ class ScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
     self.view.addSubview(boundingBox!)
     */
 
+
     self.view.layer.addSublayer(previewLayer)
 
-    var screensize = self.view.bounds.size
-    var buttonFrame = CGRectMake((screensize.width - 100) / 2, screensize.height - 50, 100, 44)
+    let focusImageView = UIImageView(frame: CGRectMake(0, (screenHeight - screenWidth) / 2 , screenWidth, screenWidth))
+    focusImageView.image = UIImage(named: "focus.png")
+    self.view.addSubview(focusImageView)
+
+    // add text label
+    let hintLabel = UILabel(frame: CGRectMake(0, 30, screenWidth, 22))
+    hintLabel.text = "bitte den QR Code anvisieren"
+    hintLabel.textColor = UIColor.blueColor()
+    hintLabel.textAlignment = NSTextAlignment.Center
+    hintLabel.font = UIFont.systemFontOfSize(13.0)
+    self.view.addSubview(hintLabel)
+
+    var buttonFrame = CGRectMake((screenWidth - 100) / 2, screenHeight - 50, 100, 44)
 
     let cancelButton = UIButton(frame: buttonFrame)
     cancelButton.setTranslatesAutoresizingMaskIntoConstraints(false)

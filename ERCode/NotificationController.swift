@@ -22,28 +22,52 @@ class NotificationController: UIViewController, UITextFieldDelegate {
 
   override func viewDidLoad() {
 
-    let ercode = NSUserDefaults.standardUserDefaults().objectForKey("ercode") as? String
-    if ercode != nil {
-      erCodeLabel.text = ercode
-    }
-
-    if !StatusChecker.checkQRCode() {
-      let uid = NSUserDefaults.standardUserDefaults().objectForKey("user_id") as? NSString
-      if uid != nil {
-        StatusChecker.downloadQRCode(uid!, callback: {(img: UIImage) in
-          self.qrImageView.image = img
-        })
-      }
-
-//      StatusChecker.downloadQRCode(uid, callback: nil)
-    } else {
-      self.qrImageView.image = StatusChecker.getQRImage()
-    }
   }
 
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
     StatusChecker.checkLoginStatus(self)
+
+    // TODO: This will only run at the first time
+    if !StatusChecker.checkQRCode() {
+      let uid = NSUserDefaults.standardUserDefaults().objectForKey("user_id") as? NSString
+      if uid != nil {
+        StatusChecker.downloadQRCode(uid!, callback: {[unowned self] (img: UIImage) in
+          self.qrImageView.image = img
+
+          let ercode = NSUserDefaults.standardUserDefaults().objectForKey("ercode") as? String
+          if ercode != nil {
+            self.erCodeLabel.text = ercode
+          }
+          // set Text
+          self.setGUIElement()
+        })
+      }
+
+      //      StatusChecker.downloadQRCode(uid, callback: nil)
+    } else {
+      self.qrImageView.image = StatusChecker.getQRImage()
+    }
+
+
+    if userData != nil {
+      setGUIElement()
+    } else if (loggedIn) {
+      WebServiceClient.getUserData({[unowned self] in
+        self.setGUIElement()
+      } )
+    }
+
+
+  }
+
+  func setGUIElement() {
+    // set Text
+    let bloodIndex = userData![kBloodType] as String
+    let showBloodType = userData![kShowBloodType] as String
+    let bloodType = showBloodType == "1" ? self.getBloodType(bloodIndex.toInt()!) : ""
+    let txtToShow = userData![kShowOnApp] as String
+    self.summaryLabel.text = "\(txtToShow) \nBlutgruppe \(bloodType)"
   }
 
   @IBAction func logout() {
@@ -56,6 +80,8 @@ class NotificationController: UIViewController, UITextFieldDelegate {
   @IBAction func saveQRintoPhotos(sender: AnyObject) {
     let qrImage = StatusChecker.getQRImage()
     UIImageWriteToSavedPhotosAlbum(qrImage, nil, nil, nil)
+
+    SVProgressHUD.showSuccessWithStatus("QRCode erfolgreich speichert")
   }
 
   @IBAction func showGuide(sender: AnyObject) {
@@ -64,7 +90,12 @@ class NotificationController: UIViewController, UITextFieldDelegate {
 
   func textFieldShouldReturn(textField: UITextField) -> Bool {
     textField.resignFirstResponder()
+    testTelephoneNum = textField.text
     return false
+  }
+
+  private func getBloodType(index: Int) -> String {
+    return [" ", "0+", "0-", "A+", "A-", "B-", "B+", "AB+", "AB-"][index]
   }
 
   /*

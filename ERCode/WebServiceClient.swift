@@ -14,6 +14,8 @@ import Foundation
 
 var wsSessionid: String?
 var loggedIn = false
+var userData: NSDictionary?
+var testTelephoneNum : String?
 
 class WebServiceClient {
 
@@ -35,11 +37,9 @@ class WebServiceClient {
           wsSessionid = response[kCookie]![kPHPSession]! as? String
 
           NSUserDefaults.standardUserDefaults().setObject(userId, forKey: "user_id")
-          if !StatusChecker.checkQRCode() {
-            // download QR Image
-            //            self.downloadQRCode(userId)
-            StatusChecker.downloadQRCode(userId, nil)
-          }
+//          if !StatusChecker.checkQRCode() {
+//            StatusChecker.downloadQRCode(userId, nil)
+//          }
 
           if callback != nil {
             callback!()
@@ -91,8 +91,34 @@ class WebServiceClient {
       )
 
     }
-
-
   }
+
+  class func getUserData(callback: (() -> Void)?) {
+    dispatch_async(dispatch_get_main_queue()){
+      // download the QRCode
+      let userId = NSUserDefaults.standardUserDefaults().objectForKey("user_id") as String
+
+      let manager = AFHTTPRequestOperationManager()
+      manager.requestSerializer.setValue(wsSessionid, forHTTPHeaderField: kPHPSession)
+      manager.GET("\(kServerUrl)user/data/\(userId)", parameters: nil,
+        success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
+          let response = responseObject as NSDictionary
+          // set UserData
+          userData = (response["Data"] as NSDictionary)
+
+          if callback != nil {
+            callback!()
+          }
+
+        },
+        failure: {(operation: AFHTTPRequestOperation!, error: NSError!) in
+
+        }
+      )
+      
+    }
+    
+  }
+
 
 }

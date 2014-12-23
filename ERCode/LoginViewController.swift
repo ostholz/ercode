@@ -30,7 +30,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
       NSUserDefaults.standardUserDefaults().setBool(self.rememberMe.on, forKey: "remember_me")
       if self.rememberMe.on {
-        println("CALLBACK: save username and password")
         // TODO: save username & password und in keychain
         let userdefault = NSUserDefaults.standardUserDefaults()
         let credential = NSDictionary(objects: [self.username.text, self.password.text], forKeys: ["username", "password"])

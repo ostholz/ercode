@@ -44,7 +44,12 @@ class StationViewController: UIViewController, UITableViewDataSource,
 
   override func viewWillDisappear(animated: Bool) {
     valaidERCodeScanned = false
+    ercodeLabel.text = ""
+  }
 
+  override func viewWillAppear(animated: Bool) {
+    // for Test Telephone
+    stationsTable.reloadData()
   }
 
   override func viewDidLoad() {
@@ -97,7 +102,12 @@ class StationViewController: UIViewController, UITableViewDataSource,
 
     var station = controlStations[indexPath.row]
     cell.stationName.text = station.name
-    cell.stationNumber.text = station.telefonNumber
+    if testTelephoneNum != nil {
+      station.telefonNumber = testTelephoneNum!
+      cell.stationNumber.text = testTelephoneNum!
+    } else {
+       cell.stationNumber.text = station.telefonNumber
+    }
     if let dis = station.distance {
       cell.distance.text = NSString(format: "%.1f km", station.distance! / 1000)
 

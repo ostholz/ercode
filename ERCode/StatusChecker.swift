@@ -20,6 +20,8 @@ class StatusChecker {
         let loginVC = storyboard.instantiateViewControllerWithIdentifier("LoginVC") as UIViewController
         controller.presentViewController(loginVC, animated: false, completion: nil)
       }
+    } else {
+      loggedIn = true
     }
   }
 
@@ -73,8 +75,10 @@ class StatusChecker {
       manager.GET("\(kServerUrl)user/data/\(userId)", parameters: nil,
         success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
           let response = responseObject as NSDictionary
-          let base64str = response["Data"]?["qrcode"]! as String
+          // set UserData
+          userData = (response["Data"] as NSDictionary)
           // save QR Code
+          let base64str = response["Data"]?["qrcode"]! as String
           let imageData = NSData(base64EncodedString: base64str, options:nil)
           imageData?.writeToFile(qrImagePath, atomically: true)
 
