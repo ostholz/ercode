@@ -40,10 +40,7 @@ class NotificationController: UIViewController, UITextFieldDelegate {
             self.erCodeLabel.text = ercode
           }
           // set Text
-          let bloodIndex = userData![kBloodType] as Int
-          let showBloodType = userData![kShowBloodType] as Int
-          let bloodType = showBloodType == 1 ? self.getBloodType(bloodIndex) : ""
-          self.summaryLabel.text = "\(userData?[kShowOnApp]) \n \(bloodType)"
+          self.setGUIElement()
         })
       }
 
@@ -83,6 +80,8 @@ class NotificationController: UIViewController, UITextFieldDelegate {
   @IBAction func saveQRintoPhotos(sender: AnyObject) {
     let qrImage = StatusChecker.getQRImage()
     UIImageWriteToSavedPhotosAlbum(qrImage, nil, nil, nil)
+
+    SVProgressHUD.showSuccessWithStatus("QRCode erfolgreich speichert")
   }
 
   @IBAction func showGuide(sender: AnyObject) {

@@ -44,6 +44,7 @@ class StationViewController: UIViewController, UITableViewDataSource,
 
   override func viewWillDisappear(animated: Bool) {
     valaidERCodeScanned = false
+    ercodeLabel.text = ""
   }
 
   override func viewWillAppear(animated: Bool) {

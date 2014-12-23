@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F04234A92B03DC8B0253ADD4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C320C6BBC9A364D13B4A836D /* libPods.a */; };
+		F54D33681A49ADEF00FD3A8F /* focus.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D33671A49ADEF00FD3A8F /* focus.png */; };
 		F55B2BAB1A443B820016D561 /* WebServiceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55B2BAA1A443B820016D561 /* WebServiceClient.swift */; };
 		F55B2BAF1A4822C60016D561 /* add_wp_cell.png in Resources */ = {isa = PBXBuildFile; fileRef = F55B2BAC1A4822C60016D561 /* add_wp_cell.png */; };
 		F55B2BB01A4822C60016D561 /* add_wp_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F55B2BAD1A4822C60016D561 /* add_wp_icon.png */; };
@@ -82,6 +83,7 @@
 		9C2E438CE3B2B205B6431B48 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C320C6BBC9A364D13B4A836D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0FF41CF095092B25700EEAF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		F54D33671A49ADEF00FD3A8F /* focus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = focus.png; path = ERCode/images/focus.png; sourceTree = "<group>"; };
 		F55B2BAA1A443B820016D561 /* WebServiceClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceClient.swift; sourceTree = "<group>"; };
 		F55B2BAC1A4822C60016D561 /* add_wp_cell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = add_wp_cell.png; path = ERCode/images/add_wp_cell.png; sourceTree = "<group>"; };
 		F55B2BAD1A4822C60016D561 /* add_wp_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = add_wp_icon.png; path = ERCode/images/add_wp_icon.png; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 		F5F5397219EEA4FB00524A39 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				F54D33671A49ADEF00FD3A8F /* focus.png */,
 				F55B2BAC1A4822C60016D561 /* add_wp_cell.png */,
 				F55B2BAD1A4822C60016D561 /* add_wp_icon.png */,
 				F55B2BAE1A4822C60016D561 /* add_wp_icon@2x.png */,
@@ -464,6 +467,7 @@
 				F57B7D181A3EDB6100E6ED70 /* scan@2x.png in Resources */,
 				F55B2BB11A4822C60016D561 /* add_wp_icon@2x.png in Resources */,
 				F57B7D041A39C9B300E6ED70 /* success.wav in Resources */,
+				F54D33681A49ADEF00FD3A8F /* focus.png in Resources */,
 				F5F5397419EEA57500524A39 /* ErCodeLogo_unscannbar.png in Resources */,
 				F5B9132C1A42FB0700A6D0DD /* home@2x.png in Resources */,
 				F55B2BB01A4822C60016D561 /* add_wp_icon.png in Resources */,
@@ -606,6 +610,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -626,6 +631,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "b7398416-4403-4095-a27e-516e3af661fb";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -648,6 +654,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -661,6 +668,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "b7398416-4403-4095-a27e-516e3af661fb";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -671,13 +679,13 @@
 			baseConfigurationReference = E0FF41CF095092B25700EEAF /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Dong Wang (7Y59E87GCZ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dong Wang (7Y59E87GCZ)";
 				INFOPLIST_FILE = ERCode/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "b7398416-4403-4095-a27e-516e3af661fb";
 				SWIFT_OBJC_BRIDGING_HEADER = "ERCode_Bridging-Header.h";
 			};
 			name = Debug;
@@ -687,13 +695,13 @@
 			baseConfigurationReference = 9C2E438CE3B2B205B6431B48 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Dong Wang (7Y59E87GCZ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dong Wang (7Y59E87GCZ)";
 				INFOPLIST_FILE = ERCode/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "b7398416-4403-4095-a27e-516e3af661fb";
 				SWIFT_OBJC_BRIDGING_HEADER = "ERCode_Bridging-Header.h";
 			};
 			name = Release;
